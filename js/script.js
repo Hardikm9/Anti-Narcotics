@@ -1,4 +1,6 @@
+// =====================
 // Quote of the Day
+// =====================
 const quotes = [
   "One day at a time. You're doing great.",
   "You are stronger than your addiction.",
@@ -8,7 +10,9 @@ const quotes = [
 ];
 document.getElementById('quoteText').innerText = quotes[Math.floor(Math.random() * quotes.length)];
 
+// =====================
 // Sobriety Tracker
+// =====================
 function loadStreak() {
   const savedDate = localStorage.getItem("sobrietyStart");
   if (!savedDate) {
@@ -26,7 +30,9 @@ function resetStreak() {
 }
 loadStreak();
 
+// =====================
 // Emergency SOS Tools
+// =====================
 function startBreathing() {
   document.getElementById("sosContent").innerHTML = `<p>Breathe in...<br>Breathe out...</p>`;
   setTimeout(() => document.getElementById("sosContent").innerHTML = '', 5000);
@@ -42,11 +48,13 @@ function showHotlines() {
 function playMusic() {
   const audio = new Audio("https://www.bensound.com/bensound-music/bensound-goinghigher.mp3");
   audio.play();
-  document.getElementById("sosContent").innerHTML = `<p>Motivation music playing... 🎵</p>`;
+  document.getElementById("sosContent").innerHTML = `<p>Motivational music playing... 🎵</p>`;
 }
 
+// =====================
 // Anonymous Report
-document.getElementById('reportForm').addEventListener('submit', async (e) => {
+// =====================
+document.getElementById('reportForm')?.addEventListener('submit', async (e) => {
   e.preventDefault();
   const reportText = document.getElementById('reportInput').value;
 
@@ -61,8 +69,10 @@ document.getElementById('reportForm').addEventListener('submit', async (e) => {
   document.getElementById('reportInput').value = '';
 });
 
-// Chatbot + quick buttons
-document.getElementById('chatForm').addEventListener('submit', handleChat);
+// =====================
+// Chatbot + Quick Buttons
+// =====================
+document.getElementById('chatForm')?.addEventListener('submit', handleChat);
 document.querySelectorAll('.quickBtn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.getElementById('chatInput').value = btn.dataset.msg;
@@ -92,8 +102,10 @@ function appendMessage(sender, msg, type) {
   document.getElementById('chatHistory').appendChild(bubble);
 }
 
+// =====================
 // Journal
-document.getElementById('journalForm').addEventListener('submit', e => {
+// =====================
+document.getElementById('journalForm')?.addEventListener('submit', e => {
   e.preventDefault();
   const entry = document.getElementById('journalEntry').value;
   const list = document.getElementById('journalList');
@@ -115,14 +127,26 @@ window.addEventListener('load', () => {
     list.appendChild(item);
   });
 });
-document.getElementById('darkToggle').addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-});
 
-// Persist theme
+// =====================
+// Dark Mode Toggle 🌙☀️
+// =====================
+const darkToggle = document.getElementById('darkToggle');
+if (darkToggle) {
+  darkToggle.innerText = localStorage.getItem('theme') === 'dark' ? '☀️' : '🌙';
+
+  darkToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    darkToggle.innerText = isDark ? '☀️' : '🌙';
+  });
+}
+
+// Load saved theme
 window.addEventListener('DOMContentLoaded', () => {
   if (localStorage.getItem('theme') === 'dark') {
     document.body.classList.add('dark-mode');
+    if (darkToggle) darkToggle.innerText = '☀️';
   }
 });
