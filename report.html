@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anonymous Report – NarcStop AI</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav>
+    <div class="logo">🚫 NarcStop AI</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="report.html" class="active">Report</a></li>
+      <li><a href="therapy.html">Therapy Chat</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="sos.html">Relapse SOS</a></li>
+      <li><a href="feedback.html">Feedback</a></li>
+    </ul>
+    <button id="darkModeToggle">🌙</button>
+  </nav>
+
+  <main class="page-content">
+    <h1>Submit an Anonymous Report</h1>
+    <p>Your identity will never be recorded. Help us keep communities safe.</p>
+
+    <form id="reportForm" class="report-form">
+      <textarea id="reportInput" rows="6" placeholder="Describe narcotic activity, location, or person anonymously..." required></textarea>
+      <button type="submit">Submit Report</button>
+      <p id="report-status" class="status-text"></p>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 NarcStop AI | Protecting lives through anonymous reporting</p>
+  </footer>
+
+  <script>
+    const statusText = document.getElementById("report-status");
+    document.getElementById("darkModeToggle").addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
+
+    document.getElementById("reportForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const report = document.getElementById("reportInput").value;
+
+      const res = await fetch("/api/report", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ report })
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        statusText.textContent = "✅ " + data.message;
+        document.getElementById("reportInput").value = "";
+      } else {
+        statusText.textContent = "❌ Error submitting report.";
+      }
+    });
+  </script>
+</body>
+</html>

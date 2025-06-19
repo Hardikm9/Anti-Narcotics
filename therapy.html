@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Therapy Chat – NarcStop AI</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav>
+    <div class="logo">🧠 NarcStop AI</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="report.html">Report</a></li>
+      <li><a href="therapy.html" class="active">Therapy Chat</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="sos.html">Relapse SOS</a></li>
+      <li><a href="feedback.html">Feedback</a></li>
+    </ul>
+    <button id="darkModeToggle">🌙</button>
+  </nav>
+
+  <main class="page-content">
+    <h1>AI Therapy Assistant</h1>
+    <p>Your personal support guide. Share how you feel. Get real help.</p>
+
+    <!-- Hero Image -->
+    <img src="assets/hero-image.png" alt="Therapy Illustration" style="width:100%; max-height:300px; object-fit:cover; border-radius:10px; margin-bottom: 1rem;" />
+
+    <div id="chatWindow" class="chat-window">
+      <div class="chat-bubble bot">
+        <img src="assets/bot-avatar.png" alt="Bot">
+        <p>Hey there! I'm here to support you. How are you feeling today?</p>
+      </div>
+    </div>
+
+    <form id="chatForm" class="chat-form">
+      <input type="text" id="chatInput" placeholder="Type your message..." required />
+      <button type="submit">Send</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 NarcStop AI | We're here for your recovery journey 💙</p>
+  </footer>
+
+  <script>
+    const chatWindow = document.getElementById('chatWindow');
+
+    function addMessage(message, sender = 'user') {
+      const bubble = document.createElement('div');
+      bubble.className = `chat-bubble ${sender}`;
+      bubble.innerHTML = `
+        <img src="assets/${sender}-avatar.png" alt="${sender}" />
+        <p>${message}</p>
+      `;
+      chatWindow.appendChild(bubble);
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+
+    document.getElementById('chatForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const input = document.getElementById('chatInput');
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      addMessage(msg, 'user');
+      input.value = '';
+
+      addMessage('Typing...', 'bot');
+      const bubbles = document.querySelectorAll('.bot');
+      const typingBubble = bubbles[bubbles.length - 1];
+
+      try {
+        const res = await fetch('/api/chatbot', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: msg })
+        });
+
+        const data = await res.json();
+        typingBubble.remove();
+        addMessage(data.reply, 'bot');
+      } catch (err) {
+        typingBubble.remove();
+        addMessage('Sorry, something went wrong. Please try again later.', 'bot');
+      }
+    });
+
+    document.getElementById("darkModeToggle").addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
+  </script>
+</body>
+</html>

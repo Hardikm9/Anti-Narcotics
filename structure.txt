@@ -1,0 +1,10 @@
+Folder PATH listing
+Volume serial number is 80D9-4EDA
+C:.
+    .env
+    reports.json
+    server.js
+    structure.txt
+    
+No subfolders exist 
+

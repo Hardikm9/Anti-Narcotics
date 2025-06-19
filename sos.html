@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Relapse SOS – NarcStop AI</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav>
+    <div class="logo">🆘 NarcStop AI</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="report.html">Report</a></li>
+      <li><a href="therapy.html">Therapy Chat</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="sos.html" class="active">Relapse SOS</a></li>
+      <li><a href="feedback.html">Feedback</a></li>
+    </ul>
+    <button id="darkModeToggle">🌙</button>
+  </nav>
+
+  <main class="page-content">
+    <h1>🚨 Relapse SOS Center</h1>
+    <p>If you’re in crisis or feel like relapsing, use these tools to ground yourself. You’re not alone.</p>
+
+    <section class="sos-buttons">
+      <button class="sos-btn" onclick="playMotivation()">🎧 Listen to Motivation</button>
+      <button class="sos-btn" onclick="showAffirmation()">💬 Show Affirmation</button>
+      <button class="sos-btn" onclick="redirectToTherapy()">🗨️ Talk to AI</button>
+    </section>
+
+    <section id="affirmationBox" class="hidden box">
+      <h3>Your Affirmation:</h3>
+      <p id="affirmationText">You are stronger than this urge. You have survived 100% of your worst days.</p>
+    </section>
+
+    <section class="box">
+      <h3>Try This Right Now</h3>
+      <ul>
+        <li>🚶 Go for a walk — 10 minutes can change your mood.</li>
+        <li>🧠 Breathe in for 4, hold for 7, breathe out for 8 — repeat 3x.</li>
+        <li>✍️ Write a letter to your future self telling how proud they’ll be.</li>
+      </ul>
+    </section>
+
+    <section class="box">
+      <h3>Emergency Contacts</h3>
+      <p>If you need urgent help, reach out to someone you trust or call a support line immediately.</p>
+      <ul>
+        <li>📞 India: 1800-11-0031</li>
+        <li>📞 USA: 1-800-662-HELP</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 NarcStop AI | You’re not weak, you’re healing. 💖</p>
+  </footer>
+
+  <script>
+    function playMotivation() {
+      const audio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
+      audio.play();
+    }
+
+    function showAffirmation() {
+      const affirmations = [
+        "You’ve made it this far. One more step is possible.",
+        "Every urge passes. Hold on. Breathe.",
+        "You are not alone. Recovery is possible.",
+        "This feeling will fade. Stay strong."
+      ];
+      const random = affirmations[Math.floor(Math.random() * affirmations.length)];
+      document.getElementById("affirmationText").innerText = random;
+      document.getElementById("affirmationBox").classList.remove("hidden");
+    }
+
+    function redirectToTherapy() {
+      window.location.href = "therapy.html";
+    }
+
+    document.getElementById("darkModeToggle").addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
+  </script>
+</body>
+</html>
