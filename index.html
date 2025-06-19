@@ -2,53 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Anti-Narcotics Campaign</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
 </head>
 <body>
+
   <header>
     <nav class="navbar">
-      <h1>Anti-Narcotics</h1>
+      <div class="logo">Anti-Narcotics</div>
       <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#mission">Mission</a></li>
-        <li><a href="#report">Report</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="report.html">Report</a></li>
+        <li><a href="therapy.html">Therapy</a></li>
+        <li><a href="sos.html">SOS</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
       </ul>
     </nav>
   </header>
 
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <h2>Say No to Drugs</h2>
-      <p>Join us in our mission to create a drug-free society.</p>
+  <section class="hero">
+    <img src="assets/images/hero.jpg" alt="Anti-Narcotics Banner" />
+    <div class="hero-text">
+      <h1>Say No To Drugs</h1>
+      <p>Join our mission to eliminate drug abuse and create a safe future.</p>
     </div>
   </section>
 
-  <section id="mission" class="content-section">
-    <h2>Our Mission</h2>
-    <p>We aim to spread awareness about the harmful effects of narcotics and empower youth to make better choices through education and outreach programs.</p>
+  <section class="about">
+    <h2>About the Campaign</h2>
+    <p>This project aims to provide awareness, support, and reporting tools against drug abuse. We enable individuals to report anonymously, seek therapy, and access verified anti-drug resources.</p>
   </section>
 
-  <section id="report" class="content-section">
-    <h2>Report Anonymously</h2>
-    <p>If you notice drug-related activities, you can report them anonymously here.</p>
-    <form action="https://formspree.io/f/your-id" method="POST">
-      <textarea name="message" placeholder="Describe what you saw..." required></textarea>
-      <button type="submit">Submit Report</button>
-    </form>
+  <section class="report-prompt">
+    <h2>Report Suspicious Activity</h2>
+    <p>Your identity will remain anonymous. Help us stop drug abuse in your community.</p>
+    <a href="report.html" class="btn">Report Now</a>
   </section>
 
-  <section id="contact" class="content-section">
-    <h2>Contact Us</h2>
-    <p>Email: contact@antinarcotics.org</p>
-    <p>Phone: +91-XXXXXXXXXX</p>
+  <section class="resources">
+    <h2>Resources</h2>
+    <ul>
+      <li><a href="https://www.narcoticsindia.nic.in/" target="_blank">Narcotics Control Bureau (NCB)</a></li>
+      <li><a href="https://www.unodc.org/" target="_blank">UNODC - United Nations Office on Drugs and Crime</a></li>
+      <li><a href="https://www.helpguide.org/articles/addictions/drug-abuse-and-addiction.htm" target="_blank">HelpGuide on Drug Abuse</a></li>
+    </ul>
   </section>
 
   <footer>
-    <p>&copy; 2025 Anti-Narcotics Initiative. All rights reserved.</p>
+    <p>&copy; 2025 Anti-Narcotics Initiative | Designed by Hardik Manchanda</p>
   </footer>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
