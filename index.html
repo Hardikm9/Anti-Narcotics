@@ -1,50 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NarcStop AI – Home</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anti-Narcotics Campaign</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" />
 </head>
 <body>
-  <nav>
-    <div class="logo">🏠 NarcStop AI</div>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="report.html">Report</a></li>
-      <li><a href="therapy.html">Therapy Chat</a></li>
-      <li><a href="dashboard.html">Dashboard</a></li>
-      <li><a href="resources.html">Resources</a></li>
-      <li><a href="sos.html">Relapse SOS</a></li>
-      <li><a href="feedback.html">Feedback</a></li>
-    </ul>
-    <button id="darkModeToggle">🌙</button>
-  </nav>
+  <header>
+    <nav class="navbar">
+      <h1>Anti-Narcotics</h1>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#report">Report</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <main class="page-content">
-    <section class="hero">
-      <div class="hero-text">
-        <h1>Break Free. Stay Free. 💙</h1>
-        <p>Your journey to recovery starts with a single step. NarcStop AI is here to support, guide, and empower you through every high and low.</p>
-        <div class="hero-buttons">
-          <a href="therapy.html" class="btn-primary">Start Therapy</a>
-          <a href="report.html" class="btn-secondary">Report Anonymously</a>
-        </div>
-      </div>
-      <div class="hero-image">
-        <img src="assets/hero-illustration.png" alt="Recovery Support Illustration" />
-      </div>
-    </section>
-  </main>
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h2>Say No to Drugs</h2>
+      <p>Join us in our mission to create a drug-free society.</p>
+    </div>
+  </section>
 
-  <footer>
-    <p>&copy; 2025 NarcStop AI | Empowering Recovery, Together 💖</p>
-  </footer>
+  <section id="mission" class="content-section">
+    <h2>Our Mission</h2>
+    <p>We aim to spread awareness about the harmful effects of narcotics and empower youth to make better choices through education and outreach programs.</p>
+  </section>
 
-  <script>
-    document.getElementById("darkModeToggle").addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-    });
-  </script>
+  <section id="report" class="content-section">
+    <h2>Report Anonymously</h2>
+    <p>If you notice drug-related activities, you can report them anonymously here.</p>
+    <form action="https://formspree.io/f/your-id" method="POST">
+      <textarea name="message" placeholder="Describe what you saw..." required></textarea>
+      <button type="submit">Submit Report</button>
+    </form>
+  </section>
+
+  <section id="contact" class="content-section">
+    <h2>Contact Us</h2>
+    <p>Email: contact@antinarcotics.org</p>
+    <p>Phone: +91-XXXXXXXXXX</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Anti-Narcotics Initiative. All rights reserved.</p>
+  </footer>
 </body>
 </html>
