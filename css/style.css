@@ -94,3 +94,32 @@ footer {
   color: #eee;
   padding: 15px 10px;
 }
+body.dark-mode {
+  background: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-mode header,
+body.dark-mode footer {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .navbar a,
+body.dark-mode .logo {
+  color: #f0f0f0;
+}
+
+body.dark-mode .about,
+body.dark-mode .report-prompt,
+body.dark-mode .resources {
+  background: #1a1a1a;
+  color: #f0f0f0;
+}
+
+#toggle-dark {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: white;
+}
