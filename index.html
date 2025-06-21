@@ -2,196 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Anti-Narcotics Campaign</title>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
-  <style>
-    /* Navbar styles */
-    body {
-      margin: 0; 
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f5f7fa;
-      color: #222;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    nav.navbar {
-      background-color: #0d47a1;
-      padding: 1rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-      color: white;
-    }
-    nav .logo {
-      font-weight: 700;
-      font-size: 1.4rem;
-      user-select: none;
-    }
-    nav ul.nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1.25rem;
-      margin: 0;
-      padding: 0;
-    }
-    nav ul.nav-links li a,
-    nav ul.nav-links li button {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 0.5rem 0.75rem;
-      border-radius: 6px;
-      border: none;
-      background: none;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-      font-size: 1rem;
-    }
-    nav ul.nav-links li a.active,
-    nav ul.nav-links li a:hover,
-    nav ul.nav-links li button:hover {
-      background-color: #1565c0;
-    }
-    nav ul.nav-links li button#toggle-dark {
-      font-size: 1.3rem;
-      user-select: none;
-    }
-
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      font-size: 2rem;
-      background: none;
-      border: none;
-      color: white;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    @media (max-width: 768px) {
-      nav ul.nav-links {
-        display: none;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        flex-direction: column;
-        background-color: #0d47a1;
-        padding: 1rem 0;
-        border-radius: 0 0 10px 10px;
-        z-index: 999;
-      }
-      nav ul.nav-links.show {
-        display: flex;
-      }
-      nav ul.nav-links li {
-        margin: 0.5rem 0;
-        text-align: center;
-      }
-      .hamburger {
-        display: block;
-      }
-    }
-
-    /* Dark Mode */
-    body.dark-mode {
-      background-color: #121212;
-      color: #eee;
-    }
-    body.dark-mode nav.navbar {
-      background-color: #1e1e1e;
-      color: #eee;
-    }
-    body.dark-mode nav ul.nav-links li a,
-    body.dark-mode nav ul.nav-links li button {
-      color: #eee;
-    }
-    body.dark-mode nav ul.nav-links li a.active,
-    body.dark-mode nav ul.nav-links li a:hover,
-    body.dark-mode nav ul.nav-links li button:hover {
-      background-color: #333;
-    }
-  </style>
+  <link rel="icon" href="assets/images/favicon.png" />
 </head>
 <body>
 
-  <nav class="navbar">
-    <div class="logo">Anti-Narcotics</div>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">NarcStop AI</div>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="report.html">Report</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </header>
 
-    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">&#9776;</button>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Together Against Narcotics</h1>
+      <p>Join the movement to build a drug-free society with NarcStop AI.</p>
+      <a href="about.html" class="btn">Learn More</a>
+    </div>
+  </section>
 
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="dashboard.html">Dashboard</a></li>
-      <li><a href="report.html">Report</a></li>
-      <li><a href="therapy.html">Therapy</a></li>
-      <li><a href="sos.html">SOS</a></li>
-      <li><a href="resources.html">Resources</a></li>
-      <li><a href="feedback.html">Feedback</a></li>
-      <li><button id="toggle-dark" title="Toggle Dark Mode">🌙</button></li>
-    </ul>
-  </nav>
+  <!-- Intro Section -->
+  <section class="intro">
+    <div class="container">
+      <h2>What We Do</h2>
+      <p>We leverage AI technology to detect, prevent, and educate about the dangers of drug abuse.</p>
+      <a href="solutions.html" class="btn secondary">Our Solutions</a>
+    </div>
+  </section>
 
-  <main style="max-width: 900px; margin: 2rem auto; padding: 0 1rem;">
-    <section class="about">
-      <h2>About the Campaign</h2>
-      <p>This project aims to provide awareness, support, and reporting tools against drug abuse. We enable individuals to report anonymously, seek therapy, and access verified anti-drug resources.</p>
-    </section>
-
-    <section class="report-prompt" style="margin-top: 2rem;">
-      <h2>Report Suspicious Activity</h2>
-      <p>Your identity will remain anonymous. Help us stop drug abuse in your community.</p>
-      <a href="report.html" class="btn" style="background:#0d47a1; color:#fff; padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration:none; font-weight:600;">Report Now</a>
-    </section>
-
-    <section class="resources" style="margin-top: 3rem;">
-      <h2>Resources</h2>
-      <ul>
-        <li><a href="https://www.narcoticsindia.nic.in/" target="_blank" rel="noopener noreferrer">Narcotics Control Bureau (NCB)</a></li>
-        <li><a href="https://www.unodc.org/" target="_blank" rel="noopener noreferrer">UNODC - United Nations Office on Drugs and Crime</a></li>
-        <li><a href="https://www.helpguide.org/articles/addictions/drug-abuse-and-addiction.htm" target="_blank" rel="noopener noreferrer">HelpGuide on Drug Abuse</a></li>
-      </ul>
-    </section>
-  </main>
-
-  <footer style="text-align:center; padding:1rem 0; background:#0d47a1; color:#fff; margin-top: 4rem;">
-    <p>&copy; 2025 Anti-Narcotics Initiative | Designed by Hardik Manchanda</p>
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 NarcStop AI. All rights reserved.</p>
   </footer>
 
+  <!-- JavaScript -->
   <script>
-    // Hamburger menu toggle
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const navLinks = document.getElementById('navLinks');
-
-    hamburgerBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-    });
-
-    // Dark mode toggle
-    const toggleDarkBtn = document.getElementById('toggle-dark');
-
-    function setDarkMode(enabled) {
-      if (enabled) {
-        document.body.classList.add('dark-mode');
-        toggleDarkBtn.textContent = '☀️';
-        localStorage.setItem('theme', 'dark');
-      } else {
-        document.body.classList.remove('dark-mode');
-        toggleDarkBtn.textContent = '🌙';
-        localStorage.setItem('theme', 'light');
-      }
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
     }
-
-    // Load saved theme
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setDarkMode(savedTheme === 'dark');
-
-    toggleDarkBtn.addEventListener('click', () => {
-      const isDark = document.body.classList.contains('dark-mode');
-      setDarkMode(!isDark);
-    });
   </script>
+
 </body>
 </html>
