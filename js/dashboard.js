@@ -6,6 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
     "Your story matters.",
     "You’ve already survived your worst day.",
     "Recovery is a journey, not a race.",
+    "You’re doing better than you think.",
+    "Every day sober is a victory.",
+    "Your effort matters. Keep going.",
+    "You are worthy of healing.",
+    "Progress, not perfection."
   ];
   const today = new Date().toISOString().slice(0, 10);
   if (localStorage.getItem("affirmationDate") !== today) {
@@ -57,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   updateStreakDisplay();
 
-  // Chart
+  // Chart.js setup
   const ctx = document.getElementById('sobrietyChart').getContext('2d');
   const chart = new Chart(ctx, {
     type: 'line',
@@ -66,16 +71,46 @@ document.addEventListener("DOMContentLoaded", () => {
       datasets: [{
         label: 'Sobriety Days',
         data: [0, 1, 2, 3, 4, 5],
-        borderColor: '#2d6cdf',
-        backgroundColor: '#cbe3ff',
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
         tension: 0.3,
-        fill: true
+        fill: true,
+        pointBackgroundColor: '#2980b9',
+        pointBorderColor: '#fff',
+        borderWidth: 2
       }]
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       scales: {
-        y: { beginAtZero: true }
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: '#333'
+          },
+          grid: {
+            color: '#ddd'
+          }
+        },
+        x: {
+          ticks: {
+            color: '#333'
+          },
+          grid: {
+            color: '#eee'
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: '#222',
+            font: {
+              weight: 'bold'
+            }
+          }
+        }
       }
     }
   });
