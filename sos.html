@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <nav>
+  <nav class="navbar">
     <div class="logo">🆘 NarcStop AI</div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -18,7 +18,7 @@
       <li><a href="sos.html" class="active">Relapse SOS</a></li>
       <li><a href="feedback.html">Feedback</a></li>
     </ul>
-    <button id="darkModeToggle">🌙</button>
+    <button id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
   </nav>
 
   <main class="page-content">
@@ -49,8 +49,8 @@
       <h3>Emergency Contacts</h3>
       <p>If you need urgent help, reach out to someone you trust or call a support line immediately.</p>
       <ul>
-        <li>📞 India: 1800-11-0031</li>
-        <li>📞 USA: 1-800-662-HELP</li>
+        <li>📞 India: <a href="tel:1800110031">1800-11-0031</a></li>
+        <li>📞 USA: <a href="tel:18006624357">1-800-662-HELP</a></li>
       </ul>
     </section>
   </main>
@@ -81,9 +81,20 @@
       window.location.href = "therapy.html";
     }
 
-    document.getElementById("darkModeToggle").addEventListener("click", () => {
+    // Dark mode toggle with persistence
+    const toggleBtn = document.getElementById("darkModeToggle");
+
+    toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      toggleBtn.textContent = isDark ? "☀️" : "🌙";
     });
+
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+      toggleBtn.textContent = "☀️";
+    }
   </script>
 </body>
 </html>
