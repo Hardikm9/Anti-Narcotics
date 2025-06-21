@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <nav>
+  <nav class="navbar">
     <div class="logo">📚 NarcStop AI</div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -18,7 +18,7 @@
       <li><a href="sos.html">Relapse SOS</a></li>
       <li><a href="feedback.html">Feedback</a></li>
     </ul>
-    <button id="darkModeToggle">🌙</button>
+    <button id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
   </nav>
 
   <main class="page-content">
@@ -28,34 +28,34 @@
     <section class="resource-section">
       <h2>📞 Emergency & Helplines</h2>
       <ul>
-        <li>India: National Addiction Helpline – 1800-11-0031</li>
-        <li>USA: SAMHSA Helpline – 1-800-662-HELP (4357)</li>
-        <li>UK: Talk to Frank – 0300 123 6600</li>
+        <li><strong>India:</strong> National Addiction Helpline – <a href="tel:1800110031">1800-11-0031</a></li>
+        <li><strong>USA:</strong> SAMHSA Helpline – <a href="tel:18006624357">1-800-662-HELP (4357)</a></li>
+        <li><strong>UK:</strong> Talk to Frank – <a href="tel:03001236600">0300 123 6600</a></li>
       </ul>
     </section>
 
     <section class="resource-section">
       <h2>🎥 Helpful Videos</h2>
       <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/Y9J-HGRA-ko" frameborder="0" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/sHrgZ9oiO9E" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/Y9J-HGRA-ko" frameborder="0" allowfullscreen title="Recovery Motivation Video"></iframe>
+        <iframe src="https://www.youtube.com/embed/sHrgZ9oiO9E" frameborder="0" allowfullscreen title="Addiction Help Video"></iframe>
       </div>
     </section>
 
     <section class="resource-section">
       <h2>🌐 Online Support Groups</h2>
       <ul>
-        <li><a href="https://www.na.org/" target="_blank">Narcotics Anonymous</a></li>
-        <li><a href="https://smartrecovery.org" target="_blank">SMART Recovery</a></li>
-        <li><a href="https://reddit.com/r/stopdrinking" target="_blank">Reddit: Stop Drinking</a></li>
+        <li><a href="https://www.na.org/" target="_blank" rel="noopener">Narcotics Anonymous</a></li>
+        <li><a href="https://smartrecovery.org" target="_blank" rel="noopener">SMART Recovery</a></li>
+        <li><a href="https://reddit.com/r/stopdrinking" target="_blank" rel="noopener">Reddit: Stop Drinking</a></li>
       </ul>
     </section>
 
     <section class="resource-section">
       <h2>📚 Free Reading Materials</h2>
       <ul>
-        <li><a href="https://www.recovery.org/addiction/" target="_blank">Addiction Explained – Recovery.org</a></li>
-        <li><a href="https://www.helpguide.org/articles/addictions/getting-help-for-drug-addiction.htm" target="_blank">HelpGuide: Getting Help for Drug Addiction</a></li>
+        <li><a href="https://www.recovery.org/addiction/" target="_blank" rel="noopener">Addiction Explained – Recovery.org</a></li>
+        <li><a href="https://www.helpguide.org/articles/addictions/getting-help-for-drug-addiction.htm" target="_blank" rel="noopener">HelpGuide: Getting Help for Drug Addiction</a></li>
       </ul>
     </section>
   </main>
@@ -65,9 +65,20 @@
   </footer>
 
   <script>
-    document.getElementById("darkModeToggle").addEventListener("click", () => {
+    // Dark mode toggle with persistence
+    const toggleBtn = document.getElementById("darkModeToggle");
+
+    toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      toggleBtn.textContent = isDark ? "☀️" : "🌙";
     });
+
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+      toggleBtn.textContent = "☀️";
+    }
   </script>
 </body>
 </html>
