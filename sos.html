@@ -61,8 +61,7 @@
   </footer>
 
   <script>
-    // Create audio element once
-    const relaxingAudio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
+    const relaxingAudio = new Audio("https://www.bensound.com/bensound-music/bensound-slowmotion.mp3");
     relaxingAudio.loop = true;
 
     function playTune() {
@@ -90,9 +89,7 @@
       window.location.href = "therapy.html";
     }
 
-    // Dark mode toggle with persistence
     const toggleBtn = document.getElementById("darkModeToggle");
-
     toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
       const isDark = document.body.classList.contains("dark-mode");
