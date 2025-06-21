@@ -12,17 +12,15 @@ body {
   line-height: 1.6;
 }
 
-header {
-  background-color: #0d1b2a;
-  padding: 20px;
-  color: white;
-}
-
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  background-color: #0d1b2a;
+  padding: 20px;
+  color: white;
 }
 
 .logo {
@@ -34,6 +32,8 @@ header {
   list-style: none;
   display: flex;
   gap: 1.5rem;
+  padding: 0;
+  margin: 0;
 }
 
 .nav-links a {
@@ -42,6 +42,15 @@ header {
   font-weight: 500;
 }
 
+#toggle-dark {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Hero Section */
 .hero {
   position: relative;
   text-align: center;
@@ -69,7 +78,8 @@ header {
   margin-bottom: 10px;
 }
 
-.about, .report-prompt, .resources {
+/* Content Blocks */
+.about, .report-prompt, .resources, .card {
   padding: 40px 20px;
   background: white;
   margin: 20px auto;
@@ -78,6 +88,7 @@ header {
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
+/* Buttons */
 .btn {
   display: inline-block;
   margin-top: 20px;
@@ -88,38 +99,63 @@ header {
   border-radius: 5px;
 }
 
+button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #1b263b;
+  color: white;
+  cursor: pointer;
+}
+
+/* Footer */
 footer {
   text-align: center;
   background: #0d1b2a;
   color: #eee;
   padding: 15px 10px;
 }
+
+/* Dark Mode Styles */
 body.dark-mode {
   background: #121212;
   color: #f0f0f0;
 }
 
-body.dark-mode header,
+body.dark-mode .navbar,
 body.dark-mode footer {
   background-color: #1e1e1e;
 }
 
-body.dark-mode .navbar a,
-body.dark-mode .logo {
+body.dark-mode .nav-links a,
+body.dark-mode .logo,
+body.dark-mode #toggle-dark {
   color: #f0f0f0;
 }
 
 body.dark-mode .about,
 body.dark-mode .report-prompt,
-body.dark-mode .resources {
+body.dark-mode .resources,
+body.dark-mode .card {
   background: #1a1a1a;
   color: #f0f0f0;
 }
 
-#toggle-dark {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: white;
+/* Responsive Grid */
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 20px;
+}
+
+/* Mood Logger Styles */
+#moodButtons button {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+/* Utility */
+.active {
+  text-decoration: underline;
 }
