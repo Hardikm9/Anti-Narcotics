@@ -12,7 +12,7 @@
   <header>
     <nav class="navbar">
       <div class="logo">Anti-Narcotics</div>
-      <button id="menu-toggle" aria-label="Toggle menu" class="menu-toggle">☰</button>
+      <button id="menu-toggle" aria-label="Toggle navigation" class="menu-toggle">☰</button>
       <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="dashboard.html">Dashboard</a></li>
@@ -21,65 +21,63 @@
         <li><a href="sos.html">SOS</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="feedback.html">Feedback</a></li>
-        <li>
-          <button id="toggle-dark" title="Toggle Dark Mode" class="dark-toggle">🌙</button>
-        </li>
+        <li><button id="toggle-dark" title="Toggle Dark Mode" class="dark-toggle">🌙</button></li>
       </ul>
     </nav>
   </header>
 
-  <section class="hero">
-    <div class="hero-text" style="text-align:center; padding: 3rem 1rem;">
+  <main>
+    <section class="hero">
       <h1>Welcome to the Anti-Narcotics Campaign</h1>
       <p>Your journey to awareness, support, and recovery starts here.</p>
       <p id="dailyQuote" class="daily-quote"></p>
-    </div>
-  </section>
+      <a href="report.html" class="btn btn-primary">Report Suspicious Activity</a>
+    </section>
 
-  <section class="about" style="max-width: 700px; margin: auto; padding: 1rem;">
-    <h2>About the Campaign</h2>
-    <p>This project aims to provide awareness, support, and reporting tools against drug abuse. We enable individuals to report anonymously, seek therapy, and access verified anti-drug resources.</p>
-  </section>
+    <section class="about">
+      <h2>About the Campaign</h2>
+      <p>
+        This project aims to provide awareness, support, and reporting tools against drug abuse.
+        We enable individuals to report anonymously, seek therapy, and access verified anti-drug resources.
+      </p>
+    </section>
 
-  <section class="report-prompt" style="text-align:center; padding: 2rem;">
-    <h2>Report Suspicious Activity</h2>
-    <p>Your identity will remain anonymous. Help us stop drug abuse in your community.</p>
-    <a href="report.html" class="btn">Report Now</a>
-  </section>
+    <section class="resources">
+      <h2>Resources</h2>
+      <ul>
+        <li><a href="https://www.narcoticsindia.nic.in/" target="_blank" rel="noopener noreferrer">Narcotics Control Bureau (NCB)</a></li>
+        <li><a href="https://www.unodc.org/" target="_blank" rel="noopener noreferrer">UNODC - United Nations Office on Drugs and Crime</a></li>
+        <li><a href="https://www.helpguide.org/articles/addictions/drug-abuse-and-addiction.htm" target="_blank" rel="noopener noreferrer">HelpGuide on Drug Abuse</a></li>
+      </ul>
+    </section>
+  </main>
 
-  <section class="resources" style="max-width: 700px; margin: auto; padding: 1rem;">
-    <h2>Resources</h2>
-    <ul>
-      <li><a href="https://www.narcoticsindia.nic.in/" target="_blank" rel="noopener noreferrer">Narcotics Control Bureau (NCB)</a></li>
-      <li><a href="https://www.unodc.org/" target="_blank" rel="noopener noreferrer">UNODC - United Nations Office on Drugs and Crime</a></li>
-      <li><a href="https://www.helpguide.org/articles/addictions/drug-abuse-and-addiction.htm" target="_blank" rel="noopener noreferrer">HelpGuide on Drug Abuse</a></li>
-    </ul>
-  </section>
-
-  <footer style="text-align:center; padding: 1rem; margin-top: 3rem; font-size: 0.9rem; color: #555;">
+  <footer>
     <p>&copy; 2025 Anti-Narcotics Initiative | Designed by Hardik Manchanda</p>
   </footer>
 
   <script>
-    // Dark mode toggle
+    // Dark mode toggle with localStorage
     const toggleBtn = document.getElementById('toggle-dark');
-    const prefersDark = localStorage.getItem('theme') === 'dark';
+    const body = document.body;
+    const savedTheme = localStorage.getItem('theme');
 
-    if (prefersDark) {
-      document.body.classList.add('dark-mode');
+    if (savedTheme === 'dark') {
+      body.classList.add('dark-mode');
       toggleBtn.textContent = '☀️';
     }
 
     toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      const isDark = document.body.classList.contains('dark-mode');
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
       toggleBtn.textContent = isDark ? '☀️' : '🌙';
     });
 
-    // Responsive menu toggle
+    // Responsive nav toggle
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.querySelector('.nav-links');
+
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
