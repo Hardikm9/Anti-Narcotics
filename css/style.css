@@ -7,8 +7,8 @@
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #f5f5f5;
-  color: #222;
+  background: #ffffff; /* Light background */
+  color: #000000;       /* Dark text for visibility */
   line-height: 1.6;
 }
 
@@ -81,7 +81,8 @@ body {
 /* Content Blocks */
 .about, .report-prompt, .resources, .card {
   padding: 40px 20px;
-  background: white;
+  background: #ffffff;
+  color: #000000;
   margin: 20px auto;
   max-width: 900px;
   border-radius: 12px;
