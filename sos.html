@@ -26,7 +26,8 @@
     <p>If you’re in crisis or feel like relapsing, use these tools to ground yourself. You’re not alone.</p>
 
     <section class="sos-buttons">
-      <button class="sos-btn" onclick="playMotivation()">🎧 Listen to Motivation</button>
+      <button class="sos-btn" onclick="playTune()">🎧 Play Relaxing Tune</button>
+      <button class="sos-btn" onclick="stopTune()">⏹️ Stop Tune</button>
       <button class="sos-btn" onclick="showAffirmation()">💬 Show Affirmation</button>
       <button class="sos-btn" onclick="redirectToTherapy()">🗨️ Talk to AI</button>
     </section>
@@ -49,8 +50,8 @@
       <h3>Emergency Contacts</h3>
       <p>If you need urgent help, reach out to someone you trust or call a support line immediately.</p>
       <ul>
-        <li>📞 India: <a href="tel:1800110031">1800-11-0031</a></li>
-        <li>📞 USA: <a href="tel:18006624357">1-800-662-HELP</a></li>
+        <li>📞 India: 1800-11-0031</li>
+        <li>📞 USA: 1-800-662-HELP</li>
       </ul>
     </section>
   </main>
@@ -60,9 +61,17 @@
   </footer>
 
   <script>
-    function playMotivation() {
-      const audio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
-      audio.play();
+    // Create audio element once
+    const relaxingAudio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
+    relaxingAudio.loop = true;
+
+    function playTune() {
+      relaxingAudio.play();
+    }
+
+    function stopTune() {
+      relaxingAudio.pause();
+      relaxingAudio.currentTime = 0;
     }
 
     function showAffirmation() {
