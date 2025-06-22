@@ -1,15 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home – NarcStop AI</title>
-  <link rel="stylesheet" href="css/style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Home – NarcStop AI</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+
+<style>
+  /* Reset & base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  a:focus, button:focus {
+    outline: 3px solid #ffd500;
+    outline-offset: 2px;
+  }
+
+  /* Navbar */
+  nav.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.3);
+    padding: 0.75rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    backdrop-filter: blur(10px);
+  }
+  nav .logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    user-select: none;
+    letter-spacing: 2px;
+    color: #fffbf7;
+  }
+  nav .menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  nav .menu-toggle:hover {
+    color: #ffd500;
+  }
+  nav ul.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  nav ul.nav-links li a {
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  nav ul.nav-links li a:hover,
+  nav ul.nav-links li a:focus,
+  nav ul.nav-links li a.active {
+    background: #ffd500;
+    color: #222;
+    outline: none;
+  }
+  #darkModeToggle {
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+  #darkModeToggle:hover {
+    color: #ffd500;
+  }
+
+  /* Responsive Navbar */
+  @media (max-width: 768px) {
+    nav .menu-toggle {
+      display: block;
+    }
+    nav ul.nav-links {
+      flex-direction: column;
+      position: fixed;
+      top: 60px;
+      right: -100%;
+      background: rgba(0,0,0,0.9);
+      height: calc(100vh - 60px);
+      width: 220px;
+      padding-top: 2rem;
+      gap: 1rem;
+      transition: right 0.3s ease;
+      border-radius: 0 0 0 20px;
+    }
+    nav ul.nav-links.active {
+      right: 0;
+    }
+    nav ul.nav-links li a {
+      font-size: 1.3rem;
+      padding: 1rem 2rem;
+      display: block;
+    }
+  }
+
+  /* Main Content */
+  main.page-content {
+    flex-grow: 1;
+    max-width: 900px;
+    margin: 4rem auto 2rem;
+    padding: 0 1rem;
+    background: rgba(255 255 255 / 0.1);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgb(0 0 0 / 0.3);
+    backdrop-filter: blur(12px);
+  }
+  main h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 0.3rem;
+    letter-spacing: 1.2px;
+    text-shadow: 0 2px 8px rgb(0 0 0 / 0.3);
+  }
+  main p {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+    color: #f0f0f0cc;
+  }
+
+  /* Quick Actions */
+  section.card {
+    background: #fff;
+    color: #222;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow:
+      0 6px 10px rgb(255 213 0 / 0.2),
+      0 12px 24px rgb(37 117 252 / 0.2);
+    transition: box-shadow 0.4s ease;
+  }
+  section.card:hover,
+  section.card:focus-within {
+    box-shadow:
+      0 10px 20px rgb(255 213 0 / 0.4),
+      0 18px 36px rgb(37 117 252 / 0.4);
+  }
+
+  section.card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #2575fc;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #ffd500, #2575fc);
+    color: #222;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    text-align: center;
+    box-shadow:
+      0 4px 12px rgb(255 213 0 / 0.5);
+    transition:
+      background 0.4s ease,
+      color 0.3s ease,
+      box-shadow 0.4s ease,
+      transform 0.3s ease;
+    user-select: none;
+  }
+  .btn:hover,
+  .btn:focus {
+    background: linear-gradient(135deg, #2575fc, #ffd500);
+    color: #111;
+    box-shadow:
+      0 6px 18px rgb(37 117 252 / 0.7);
+    outline: none;
+    transform: scale(1.05);
+  }
+  .btn:active {
+    transform: scale(0.98);
+  }
+
+  /* Quick Actions container */
+  .quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  /* About Section */
+  section.card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+    color: #111;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 1rem 1rem 2rem;
+    background: rgba(0, 0, 0, 0.2);
+    color: #ffd500;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1.2px;
+    user-select: none;
+  }
+
+  /* Dark Mode */
+  body.dark-mode {
+    background: linear-gradient(135deg, #121212, #1c1c1c);
+    color: #eee;
+  }
+  body.dark-mode nav.navbar {
+    background: rgba(30,30,30,0.85);
+  }
+  body.dark-mode main.page-content {
+    background: rgba(30, 30, 30, 0.85);
+    color: #eee;
+    box-shadow:
+      0 6px 12px rgb(255 213 0 / 0.3),
+      0 10px 18px rgb(37 117 252 / 0.3);
+  }
+  body.dark-mode section.card {
+    background: #222;
+    color: #eee;
+    box-shadow:
+      0 6px 10px rgb(255 213 0 / 0.3),
+      0 12px 24px rgb(37 117 252 / 0.3);
+  }
+  body.dark-mode section.card h2 {
+    color: #ffd500;
+  }
+  body.dark-mode footer {
+    background: rgba(0,0,0,0.8);
+    color: #ffd500;
+  }
+  body.dark-mode .btn {
+    background: linear-gradient(135deg, #2575fc, #ffd500);
+    color: #222;
+    box-shadow:
+      0 4px 12px rgb(37 117 252 / 0.6);
+  }
+  body.dark-mode .btn:hover,
+  body.dark-mode .btn:focus {
+    background: linear-gradient(135deg, #ffd500, #2575fc);
+    color: #111;
+    box-shadow:
+      0 6px 18px rgb(255 213 0 / 0.7);
+  }
+</style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar" role="navigation" aria-label="Main Navigation">
-    <div class="logo" tabindex="0">🧠 NarcStop AI</div>
+  <nav class="navbar" role="navigation" aria-label="Primary Navigation">
+    <div class="logo" tabindex="0" aria-label="NarcStop AI Home">📘 NarcStop AI</div>
     <button
       class="menu-toggle"
       aria-label="Toggle menu"
@@ -17,7 +296,7 @@
       aria-controls="primary-navigation"
     >☰</button>
     <ul class="nav-links" id="primary-navigation">
-      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="index.html" class="active" aria-current="page">Home</a></li>
       <li><a href="report.html">Report</a></li>
       <li><a href="therapy.html">Therapy Chat</a></li>
       <li><a href="dashboard.html">Dashboard</a></li>
@@ -25,45 +304,35 @@
       <li><a href="sos.html">Relapse SOS</a></li>
       <li><a href="feedback.html">Feedback</a></li>
     </ul>
-    <button
-      id="darkModeToggle"
-      title="Toggle Dark Mode"
-      aria-pressed="false"
-      aria-label="Toggle dark mode"
-    >🌙</button>
+    <button id="darkModeToggle" title="Toggle Dark Mode" aria-pressed="false">🌙</button>
   </nav>
 
-  <!-- Main Content -->
-  <main class="page-content">
+  <main class="page-content" role="main" tabindex="0">
     <h1>Welcome to NarcStop AI</h1>
-    <p>Helping you on your path to recovery, one step at a time.</p>
+    <p>Your companion on the path to recovery and hope. Explore resources, track progress, or reach out when you need support.</p>
 
-    <section class="card">
-      <h2>🧩 Features at a Glance</h2>
-      <ul>
-        <li><strong>Anonymous Reporting:</strong> Submit reports safely and confidentially.</li>
-        <li><strong>Therapy Chat:</strong> Chat with our AI assistant anytime.</li>
-        <li><strong>Relapse SOS:</strong> Tools and support when you need it most.</li>
-        <li><strong>Resources:</strong> Helpful contacts, readings, and support groups.</li>
-        <li><strong>Dashboard:</strong> Track your progress and moods.</li>
-        <li><strong>Feedback:</strong> Help us improve with your valuable input.</li>
-      </ul>
+    <section class="card" aria-label="Quick Actions">
+      <h2>Quick Access</h2>
+      <div class="quick-actions">
+        <a href="report.html" class="btn" role="button" aria-label="Submit a Report">📝 Submit a Report</a>
+        <a href="therapy.html" class="btn" role="button" aria-label="Chat with Therapy AI">💬 Therapy Chat</a>
+        <a href="resources.html" class="btn" role="button" aria-label="View Recovery Resources">📚 Recovery Resources</a>
+        <a href="sos.html" class="btn" role="button" aria-label="Access Relapse SOS Tools">🆘 Relapse SOS</a>
+        <a href="dashboard.html" class="btn" role="button" aria-label="View Dashboard">📊 Dashboard</a>
+      </div>
     </section>
 
-    <section class="card text-center" style="margin-top: 2rem;">
-      <h2>💡 Daily Affirmation</h2>
-      <p id="dailyAffirmation" aria-live="polite" aria-atomic="true" style="font-style: italic; font-size: 1.2rem; color: var(--color-accent);">
-        You are stronger than any challenge you face.
-      </p>
+    <section class="card" aria-label="About NarcStop AI" style="margin-top: 3rem;">
+      <h2>About NarcStop AI</h2>
+      <p>NarcStop AI combines compassionate technology with trusted support to help you overcome addiction. Whether you want to anonymously report, chat, or explore helpful tools, we've got your back.</p>
+      <p>Remember, every step forward counts. 🌱</p>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 NarcStop AI | Your voice matters. 🌟</p>
+    <p>&copy; 2025 NarcStop AI | Never give up on yourself. 💜</p>
   </footer>
 
-  <!-- Scripts -->
   <script>
     // Dark Mode Toggle
     const toggleBtn = document.getElementById("darkModeToggle");
@@ -72,7 +341,6 @@
       toggleBtn.textContent = "☀️";
       toggleBtn.setAttribute("aria-pressed", "true");
     }
-
     toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
       const isDark = document.body.classList.contains("dark-mode");
@@ -81,30 +349,14 @@
       toggleBtn.setAttribute("aria-pressed", isDark.toString());
     });
 
-    // Mobile Menu Toggle with ARIA
+    // Hamburger Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-
     menuToggle.addEventListener('click', () => {
-      const isActive = navLinks.classList.toggle('active');
-      menuToggle.setAttribute('aria-expanded', isActive.toString());
+      navLinks.classList.toggle('active');
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', (!expanded).toString());
     });
-
-    // Daily Affirmation rotation
-    const affirmations = [
-      "You are stronger than any challenge you face.",
-      "Every step forward is a victory.",
-      "Recovery is a journey, not a race.",
-      "Small progress is still progress.",
-      "You are not alone in this fight.",
-    ];
-
-    const dailyAffirmation = document.getElementById('dailyAffirmation');
-    function rotateAffirmation() {
-      const randomIndex = Math.floor(Math.random() * affirmations.length);
-      dailyAffirmation.textContent = affirmations[randomIndex];
-    }
-    setInterval(rotateAffirmation, 15000); // Change every 15 seconds
   </script>
 </body>
 </html>
