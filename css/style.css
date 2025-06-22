@@ -39,7 +39,6 @@ body.dark-mode {
   --footer-text: #8b949e;
 }
 
-
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--background-color);
@@ -51,7 +50,7 @@ body {
 }
 
 /* Navbar */
-nav, .navbar {
+nav {
   background-color: var(--nav-bg);
   color: var(--nav-text);
   display: flex;
@@ -62,22 +61,23 @@ nav, .navbar {
   position: sticky;
   top: 0;
   z-index: 100;
+  flex-wrap: wrap;
 }
 
-nav .logo, .navbar .logo {
+nav .logo {
   font-weight: 700;
   font-size: 1.3rem;
   user-select: none;
 }
 
-nav ul.nav-links, .navbar ul.nav-links {
+nav ul.nav-links {
   list-style: none;
   display: flex;
   gap: 1rem;
   align-items: center;
 }
 
-nav ul.nav-links li a, .navbar ul.nav-links li a {
+nav ul.nav-links li a {
   color: var(--nav-text);
   text-decoration: none;
   padding: 0.35rem 0.6rem;
@@ -87,13 +87,12 @@ nav ul.nav-links li a, .navbar ul.nav-links li a {
 }
 
 nav ul.nav-links li a:hover,
-nav ul.nav-links li a.active,
-.navbar ul.nav-links li a.active {
+nav ul.nav-links li a.active {
   background-color: var(--primary-color);
   color: var(--btn-text);
 }
 
-nav button#toggle-dark, nav button#darkModeToggle {
+nav button#darkModeToggle {
   background-color: transparent;
   border: none;
   color: var(--nav-text);
@@ -103,8 +102,54 @@ nav button#toggle-dark, nav button#darkModeToggle {
   transition: color 0.3s ease;
 }
 
-nav button#toggle-dark:hover, nav button#darkModeToggle:hover {
+nav button#darkModeToggle:hover {
   color: var(--primary-light);
+}
+
+/* Toggle button (hamburger) */
+nav .menu-toggle {
+  display: none;
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  color: var(--nav-text);
+  cursor: pointer;
+}
+
+/* Responsive Nav for mobile */
+@media (max-width: 768px) {
+  nav .menu-toggle {
+    display: block;
+  }
+
+  nav ul.nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: var(--nav-bg);
+    position: absolute;
+    top: 60px;
+    right: 1rem;
+    width: 200px;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px var(--card-shadow);
+    padding: 1rem;
+    z-index: 999;
+  }
+
+  nav ul.nav-links li {
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  nav ul.nav-links.active {
+    display: flex;
+  }
+
+  #darkModeToggle {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+  }
 }
 
 /* Main content area */
@@ -270,74 +315,4 @@ footer {
 /* Hidden utility class */
 .hidden {
   display: none !important;
-}
-
-/* Responsive Nav for mobile */
-@media (max-width: 768px) {
-  nav ul.nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: var(--nav-bg);
-    position: absolute;
-    top: 60px;
-    right: 1rem;
-    width: 200px;
-    border-radius: 6px;
-    box-shadow: 0 4px 8px var(--card-shadow);
-    padding: 1rem;
-  }
-
-  nav ul.nav-links.active {
-    display: flex;
-  }
-
-  nav .menu-toggle {
-    display: block;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: var(--nav-text);
-    background: none;
-    border: none;
-  }
-}
-/* Mobile menu button show only on small screens */
-nav .menu-toggle {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  nav ul.nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: var(--nav-bg);
-    position: absolute;
-    top: 60px;
-    right: 1rem;
-    width: 200px;
-    border-radius: 6px;
-    box-shadow: 0 4px 8px var(--card-shadow);
-    padding: 1rem;
-  }
-
-  nav ul.nav-links.active {
-    display: flex;
-  }
-
-  nav .menu-toggle {
-    display: block;
-  }
-}
-nav .menu-toggle {
-  display: none;
-  font-size: 1.6rem;
-  background: none;
-  border: none;
-  color: var(--nav-text);
-  cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  nav .menu-toggle {
-    display: block;
-  }
 }
