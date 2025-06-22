@@ -5,6 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Anonymous Report – NarcStop AI</title>
   <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
 </head>
 <body>
   <nav class="navbar">
@@ -27,7 +43,7 @@
 
     <form id="reportForm" class="box">
       <textarea id="reportInput" rows="6" placeholder="Describe narcotic activity, location, or person anonymously..." required></textarea>
-      <button type="submit" class="btn-primary">Submit Report</button>
+      <button type="submit" class="btn">Submit Report</button>
       <p id="report-status" class="status-text"></p>
     </form>
   </main>
@@ -37,36 +53,35 @@
   </footer>
 
   <script>
+    const darkBtn = document.getElementById("darkModeToggle");
     const statusText = document.getElementById("report-status");
 
-    document.getElementById("darkModeToggle").addEventListener("click", () => {
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+      darkBtn.textContent = "☀️";
+    }
+
+    darkBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
       const isDark = document.body.classList.contains("dark-mode");
       localStorage.setItem("theme", isDark ? "dark" : "light");
-      document.getElementById("darkModeToggle").textContent = isDark ? "☀️" : "🌙";
+      darkBtn.textContent = isDark ? "☀️" : "🌙";
     });
-
-    // Load theme
-    if (localStorage.getItem("theme") === "dark") {
-      document.body.classList.add("dark-mode");
-      document.getElementById("darkModeToggle").textContent = "☀️";
-    }
 
     document.getElementById("reportForm").addEventListener("submit", async (e) => {
       e.preventDefault();
-      const report = document.getElementById("reportInput").value;
+      const report = document.getElementById("reportInput").value.trim();
+      if (!report) return;
 
-      const res = await fetch("/api/report", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ report })
-      });
-
-      const data = await res.json();
-      if (res.ok) {
-        statusText.textContent = "✅ " + data.message;
+      try {
+        await db.collection("anonymousReports").add({
+          report,
+          timestamp: new Date().toISOString()
+        });
+        statusText.textContent = "✅ Report submitted anonymously.";
         document.getElementById("reportInput").value = "";
-      } else {
+      } catch (err) {
+        console.error(err);
         statusText.textContent = "❌ Error submitting report.";
       }
     });
