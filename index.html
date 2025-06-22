@@ -2,16 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NarcStop AI – Anti-Narcotics Campaign</title>
-  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="assets/images/favicon.ico" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <!-- Navbar -->
   <nav>
     <div class="logo">🚫 NarcStop AI</div>
-    <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
+    <button class="menu-toggle">☰</button>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="report.html">Report</a></li>
@@ -21,69 +20,55 @@
       <li><a href="sos.html">Relapse SOS</a></li>
       <li><a href="feedback.html">Feedback</a></li>
     </ul>
-    <button id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
+    <button id="darkModeToggle">🌙</button>
   </nav>
 
-  <!-- Hero Section -->
   <section class="hero">
-    <h1>🌟 Welcome to <span style="color: var(--primary-color)">NarcStop AI</span></h1>
-    <p>Your powerful platform to report abuse, seek therapy, and fight addiction — anonymously and effectively.</p>
-    <img src="assets/hero-image.png" alt="Anti-Narcotics Hero" />
+    <div class="hero-inner">
+      <h1>Welcome to <span>NarcStop AI</span></h1>
+      <p>Your all‑in‑one platform to report abuse, seek therapy, and fight addiction—secure, supportive, and smart.</p>
+      <a href="report.html" class="btn btn-lg">🚨 Report Now</a>
+    </div>
+    <img src="assets/hero-image.png" alt="Hero illustration" />
   </section>
 
-  <!-- About Section -->
   <section class="card about">
-    <h2>🎯 About Our Mission</h2>
+    <h2>🎯 Our Mission</h2>
     <p>
-      NarcStop AI empowers individuals to fight drug abuse with advanced tools. We provide secure anonymous reporting, mental health therapy chat, live relapse SOS help, and real-time analytics.
+      NarcStop AI empowers you with anonymous reporting, AI‑driven therapy chat, relapse SOS tools, and curated resources—that're mobile‑first and privacy‑focused.
     </p>
   </section>
 
-  <!-- Report Section CTA -->
-  <section class="card">
-    <h2>📢 Report Suspicious Activity</h2>
-    <p>
-      Keep your community safe. Submit anonymous reports without fear — no login, no tracking.
-    </p>
-    <a href="report.html" class="btn">🚨 Report Now</a>
-  </section>
-
-  <!-- Resources Section -->
   <section class="card resources">
-    <h2>📚 Explore Trusted Resources</h2>
+    <h2>📚 Trusted Resources</h2>
     <ul>
       <li><a href="https://www.narcoticsindia.nic.in/" target="_blank">Narcotics Control Bureau (India)</a></li>
-      <li><a href="https://www.unodc.org/" target="_blank">UNODC – United Nations on Drugs & Crime</a></li>
+      <li><a href="https://www.unodc.org/" target="_blank">UNODC – UN on Drugs & Crime</a></li>
       <li><a href="https://www.helpguide.org/articles/addictions/drug-abuse-and-addiction.htm" target="_blank">HelpGuide – Drug Abuse</a></li>
     </ul>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 NarcStop AI | Designed by Hardik Manchanda</p>
+    <p>© 2025 NarcStop AI | Designed by Hardik Manchanda</p>
   </footer>
 
-  <!-- Scripts -->
   <script>
-    const toggleBtn = document.getElementById('darkModeToggle');
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+    const toggle = document.getElementById('darkModeToggle');
+    const menuBtn = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav-links');
 
-    if (localStorage.getItem('theme') === 'dark') {
+    if(localStorage.getItem('theme') === 'dark') {
       document.body.classList.add('dark-mode');
-      toggleBtn.textContent = '☀️';
+      toggle.textContent = '☀️';
     }
 
-    toggleBtn.addEventListener('click', () => {
+    toggle.addEventListener('click', ()=>{
       document.body.classList.toggle('dark-mode');
-      const isDark = document.body.classList.contains('dark-mode');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      toggleBtn.textContent = isDark ? '☀️' : '🌙';
+      toggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
     });
 
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
+    menuBtn.addEventListener('click', ()=> nav.classList.toggle('active'));
   </script>
 </body>
 </html>
