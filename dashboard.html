@@ -8,6 +8,15 @@
   <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script defer src="js/dashboard.js"></script>
+  <style>
+    .chart-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+      margin: 0 auto;
+    }
+  </style>
 </head>
 <body>
 
@@ -33,7 +42,7 @@
     <p style="text-align:center;">Track your journey, progress, and mindset all in one place.</p>
 
     <div class="grid" style="padding: 20px;">
-      
+
       <!-- Daily Affirmation -->
       <div class="card box">
         <h2>💖 Daily Affirmation</h2>
@@ -62,7 +71,9 @@
       <!-- Sobriety Chart -->
       <div class="card box">
         <h2>📈 Sobriety Progress</h2>
-        <canvas id="sobrietyChart" height="200"></canvas>
+        <div class="chart-container">
+          <canvas id="sobrietyChart"></canvas>
+        </div>
       </div>
 
     </div>
@@ -98,5 +109,6 @@
       toggleBtn.textContent = isDark ? "☀️" : "🌙";
     });
   </script>
+
 </body>
 </html>
