@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anti-Narcotics Campaign</title>
+  <title>NarcStop AI – Anti-Narcotics Campaign</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
+  <!-- Navbar -->
+  <nav class="navbar">
     <div class="logo">🚫 NarcStop AI</div>
     <button class="menu-toggle" aria-label="Toggle menu">☰</button>
     <ul class="nav-links">
@@ -26,41 +26,41 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="hero card">
-    <h1>Welcome to NarcStop AI</h1>
-    <p>Your one-stop platform to fight drug abuse, seek therapy, and stay informed.</p>
-    <img src="assets/hero-image.png" alt="Hero" style="max-width: 100%; border-radius: 10px; margin-top: 1rem;">
-  </section>
+  <header class="hero card">
+    <h1>🌟 Welcome to NarcStop AI</h1>
+    <p>Your all-in-one platform to fight drug abuse, find support, and protect communities.</p>
+    <img src="assets/hero-image.png" alt="Hero Illustration" class="hero-image">
+  </header>
 
   <!-- About Section -->
-  <section class="about card">
-    <h2>About the Campaign</h2>
-    <p>This project aims to provide awareness, support, and reporting tools against drug abuse. We enable individuals to report anonymously, seek therapy, and access verified anti-drug resources.</p>
+  <section class="card">
+    <h2>📢 About the Campaign</h2>
+    <p>NarcStop AI empowers individuals to anonymously report narcotics activity, access therapy, and explore trusted anti-drug resources. Together, we stand against substance abuse and its effects.</p>
   </section>
 
-  <!-- Report CTA -->
-  <section class="card">
-    <h2>Report Suspicious Activity</h2>
-    <p>Your identity will remain anonymous. Help us stop drug abuse in your community.</p>
-    <a href="report.html" class="btn">📢 Report Now</a>
+  <!-- CTA Report Section -->
+  <section class="card highlight">
+    <h2>🕵️ Report Suspicious Activity</h2>
+    <p>Your identity will never be stored. Help us keep your community safe.</p>
+    <a href="report.html" class="btn">📤 Report Now</a>
   </section>
 
   <!-- Resources Section -->
-  <section class="resources card">
-    <h2>Helpful Resources</h2>
+  <section class="card">
+    <h2>📚 Useful Resources</h2>
     <ul>
       <li><a href="https://www.narcoticsindia.nic.in/" target="_blank">Narcotics Control Bureau (NCB)</a></li>
-      <li><a href="https://www.unodc.org/" target="_blank">UNODC - United Nations Office on Drugs and Crime</a></li>
+      <li><a href="https://www.unodc.org/" target="_blank">UNODC – United Nations Office on Drugs and Crime</a></li>
       <li><a href="https://www.helpguide.org/articles/addictions/drug-abuse-and-addiction.htm" target="_blank">HelpGuide on Drug Abuse</a></li>
     </ul>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 NarcStop AI | Designed by Hardik Manchanda</p>
+    <p>&copy; 2025 NarcStop AI | Built with purpose by Hardik Manchanda</p>
   </footer>
 
-  <!-- JS for Dark Mode and Mobile Menu -->
+  <!-- Scripts -->
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -69,8 +69,7 @@
     });
 
     const toggleBtn = document.getElementById("darkModeToggle");
-    const prefersDark = localStorage.getItem("theme") === "dark";
-    if (prefersDark) {
+    if (localStorage.getItem("theme") === "dark") {
       document.body.classList.add("dark-mode");
       toggleBtn.textContent = "☀️";
     }
