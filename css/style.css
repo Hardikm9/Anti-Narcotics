@@ -5,40 +5,40 @@
   box-sizing: border-box;
 }
 
-/* Light Theme Variables */
+/* Light Theme */
 :root {
-  --primary-color: #2563eb;
-  --primary-light: #e0e7ff;
-  --background-color: #f9fafb;
-  --text-color: #1f2937;
-  --nav-bg: #ffffff;
-  --nav-text: #111827;
+  --primary-color: #7c3aed;
+  --primary-light: #ede9fe;
+  --background-color: #f9f5ff;
+  --text-color: #1a1a1a;
+  --nav-bg: #fff0fb;
+  --nav-text: #5b21b6;
   --card-bg: #ffffff;
-  --card-shadow: rgba(0, 0, 0, 0.05);
-  --btn-bg: #2563eb;
+  --card-shadow: rgba(124, 58, 237, 0.1);
+  --btn-bg: #7c3aed;
   --btn-text: #ffffff;
-  --btn-hover-bg: #1d4ed8;
-  --link-color: #2563eb;
-  --footer-bg: #f3f4f6;
-  --footer-text: #6b7280;
+  --btn-hover-bg: #6d28d9;
+  --link-color: #7c3aed;
+  --footer-bg: #f3e8ff;
+  --footer-text: #4c1d95;
 }
 
-/* Dark Theme Overrides */
+/* Dark Theme */
 body.dark-mode {
-  --primary-color: #60a5fa;
-  --primary-light: #1e3a8a;
-  --background-color: #0f172a;
-  --text-color: #f3f4f6;
-  --nav-bg: #1e293b;
-  --nav-text: #e5e7eb;
-  --card-bg: #1f2937;
+  --primary-color: #c084fc;
+  --primary-light: #2e1065;
+  --background-color: #1c1b22;
+  --text-color: #f3e8ff;
+  --nav-bg: #2a2239;
+  --nav-text: #e9d5ff;
+  --card-bg: #312e38;
   --card-shadow: rgba(255, 255, 255, 0.05);
-  --btn-bg: #3b82f6;
+  --btn-bg: #a855f7;
   --btn-text: #ffffff;
-  --btn-hover-bg: #2563eb;
-  --link-color: #60a5fa;
-  --footer-bg: #1e293b;
-  --footer-text: #9ca3af;
+  --btn-hover-bg: #9333ea;
+  --link-color: #e9d5ff;
+  --footer-bg: #2a2239;
+  --footer-text: #e0d7f7;
 }
 
 body {
@@ -70,12 +70,7 @@ nav {
 nav .logo {
   font-weight: bold;
   font-size: 1.5rem;
-}
-
-nav .right-nav {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  flex: 1;
 }
 
 nav ul.nav-links {
@@ -100,16 +95,17 @@ nav ul.nav-links li a.active {
   color: var(--btn-text);
 }
 
-#darkModeToggle {
+nav #darkModeToggle {
   background-color: transparent;
   border: none;
   color: var(--nav-text);
   font-size: 1.4rem;
   cursor: pointer;
   transition: color 0.3s;
+  margin-left: auto;
 }
 
-#darkModeToggle:hover {
+nav #darkModeToggle:hover {
   color: var(--primary-color);
 }
 
@@ -145,11 +141,11 @@ nav ul.nav-links li a.active {
   }
 }
 
-/* Hero Section */
+/* Hero */
 .hero {
   text-align: center;
   padding: 3rem 1rem;
-  background: linear-gradient(135deg, var(--primary-light), var(--background-color));
+  background: linear-gradient(to right, var(--primary-light), #fdf4ff);
   border-radius: 12px;
   margin: 1.5rem;
   transition: 0.4s ease;
@@ -182,7 +178,7 @@ nav ul.nav-links li a.active {
   box-shadow: 0 6px 12px var(--card-shadow);
   margin: 1rem auto;
   max-width: 960px;
-  transition: background-color 0.4s ease, box-shadow 0.3s ease;
+  transition: background-color 0.4s ease;
 }
 
 .card h2 {
@@ -190,7 +186,7 @@ nav ul.nav-links li a.active {
   margin-bottom: 0.75rem;
 }
 
-/* Buttons */
+/* Button */
 .btn, button {
   background-color: var(--btn-bg);
   color: var(--btn-text);
@@ -199,15 +195,14 @@ nav ul.nav-links li a.active {
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s;
+  transition: background-color 0.3s ease;
 }
 
 .btn:hover, button:hover {
   background-color: var(--btn-hover-bg);
-  transform: scale(1.03);
 }
 
-/* Links */
+/* General links */
 a {
   color: var(--link-color);
   transition: 0.2s;
