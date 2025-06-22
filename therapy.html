@@ -8,19 +8,24 @@
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar">
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
     <div class="logo">🧠 NarcStop AI</div>
-    <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
-    <ul class="nav-links">
+    <button 
+      class="menu-toggle" 
+      aria-label="Toggle Menu" 
+      aria-expanded="false" 
+      aria-controls="primary-navigation"
+    >☰</button>
+    <ul class="nav-links" id="primary-navigation">
       <li><a href="index.html">Home</a></li>
       <li><a href="report.html">Report</a></li>
-      <li><a href="therapy.html" class="active">Therapy Chat</a></li>
+      <li><a href="therapy.html" class="active" aria-current="page">Therapy Chat</a></li>
       <li><a href="dashboard.html">Dashboard</a></li>
       <li><a href="resources.html">Resources</a></li>
       <li><a href="sos.html">Relapse SOS</a></li>
       <li><a href="feedback.html">Feedback</a></li>
     </ul>
-    <button id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
+    <button id="darkModeToggle" title="Toggle Dark Mode" aria-pressed="false">🌙</button>
   </nav>
 
   <!-- Main Content -->
@@ -29,20 +34,21 @@
     <p>Chat anonymously with our AI therapy assistant. We're here to support your recovery journey.</p>
 
     <!-- Chat Embed -->
-    <section class="card" style="padding: 1rem; margin-top: 1.5rem; display: flex; justify-content: center;">
+    <section class="card" style="padding: 1rem; margin-top: 1.5rem; display: flex; justify-content: center;" aria-label="AI Therapy Chatbot">
       <iframe
         src="https://www.chatbase.co/chatbot-iframe/0xcpuX5tzydy-wZpZ44vA"
         style="height: 500px; max-width: 600px; width: 100%; border: none; border-radius: 12px;"
         frameborder="0"
         allow="clipboard-write"
         title="Therapy Chat"
+        loading="lazy"
       ></iframe>
     </section>
 
     <!-- Call Button -->
     <p style="text-align: center; margin-top: 1rem;">
       <strong>Need to talk to a real person?</strong><br />
-      <a href="tel:1933" class="btn" style="margin-top: 0.5rem;">📞 Call 1933 (India)</a>
+      <a href="tel:1933" class="btn" style="margin-top: 0.5rem;" aria-label="Call 1933 helpline in India">📞 Call 1933 (India)</a>
     </p>
   </main>
 
@@ -59,6 +65,7 @@
     if (localStorage.getItem("theme") === "dark") {
       document.body.classList.add("dark-mode");
       toggleBtn.textContent = "☀️";
+      toggleBtn.setAttribute("aria-pressed", "true");
     }
 
     toggleBtn.addEventListener("click", () => {
@@ -66,14 +73,16 @@
       const isDark = document.body.classList.contains("dark-mode");
       localStorage.setItem("theme", isDark ? "dark" : "light");
       toggleBtn.textContent = isDark ? "☀️" : "🌙";
+      toggleBtn.setAttribute("aria-pressed", isDark.toString());
     });
 
-    // Hamburger Toggle
+    // Hamburger Toggle Accessibility
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
     menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
+      const isActive = navLinks.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isActive.toString());
     });
   </script>
 </body>
