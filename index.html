@@ -1,205 +1,214 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anti-Narcotics Campaign</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
-  <style>
-    :root {
-      --primary-color: #0f172a;
-      --accent-color: #14b8a6;
-      --background: #f0f4f8;
-      --text: #1e293b;
-      --card-bg: #ffffff;
-      --btn-bg: #14b8a6;
-      --btn-text: #ffffff;
-      --btn-hover: #0d9488;
-    }
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--background);
-      color: var(--text);
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      scroll-behavior: smooth;
-      transition: background-color 0.5s, color 0.5s;
-    }
+/* Light Theme Variables */
+:root {
+  --primary-color: #6c63ff;
+  --accent-color: #ff6584;
+  --background-color: #ffffff;
+  --text-color: #1a1a1a;
+  --nav-bg: #f4f4f4;
+  --nav-text: #333333;
+  --card-bg: #ffffff;
+  --card-shadow: rgba(0, 0, 0, 0.08);
+  --btn-bg: #6c63ff;
+  --btn-text: #ffffff;
+  --btn-hover-bg: #574fd6;
+  --link-color: #6c63ff;
+  --footer-bg: #f4f4f4;
+  --footer-text: #666666;
+}
 
-    nav {
-      background-color: var(--primary-color);
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
+/* Dark Theme Overrides */
+body.dark-mode {
+  --background-color: #1e1e2f;
+  --text-color: #e0e0e0;
+  --nav-bg: #2a2a3d;
+  --nav-text: #ffffff;
+  --card-bg: #2e2e42;
+  --card-shadow: rgba(255, 255, 255, 0.05);
+  --btn-bg: #ff6584;
+  --btn-text: #ffffff;
+  --btn-hover-bg: #ff4b6e;
+  --link-color: #9fa8ff;
+  --footer-bg: #2a2a3d;
+  --footer-text: #aaaaaa;
+}
 
-    nav .logo {
-      font-weight: bold;
-      font-size: 1.3rem;
-    }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.4s, color 0.4s;
+}
 
-    .nav-links {
-      display: flex;
-      gap: 1.2rem;
-      list-style: none;
-    }
+nav {
+  background-color: var(--nav-bg);
+  color: var(--nav-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 2px 6px var(--card-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-wrap: wrap;
+  transition: background-color 0.4s, color 0.4s;
+}
 
-    .nav-links a {
-      text-decoration: none;
-      color: white;
-      font-weight: 600;
-      padding: 0.3rem 0.6rem;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-    }
+nav .logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  user-select: none;
+  flex: 1;
+}
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      background-color: var(--accent-color);
-      color: white;
-    }
+nav ul.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
 
-    #darkModeToggle {
-      background: transparent;
-      border: none;
-      color: white;
-      font-size: 1.4rem;
-      cursor: pointer;
-    }
+nav ul.nav-links li a {
+  color: var(--nav-text);
+  text-decoration: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
 
-    .hero {
-      text-align: center;
-      padding: 4rem 2rem;
-      background: linear-gradient(to right, #e0f7fa, #f0fdfa);
-      border-radius: 12px;
-      margin: 2rem auto;
-      max-width: 900px;
-      transition: transform 0.3s;
-    }
+nav ul.nav-links li a:hover,
+nav ul.nav-links li a.active {
+  background-color: var(--accent-color);
+  color: #fff;
+}
 
-    .hero:hover {
-      transform: scale(1.01);
-    }
+nav button#darkModeToggle {
+  background: transparent;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  transition: color 0.3s ease;
+  color: var(--nav-text);
+}
 
-    .hero img {
-      width: 100%;
-      max-width: 600px;
-      border-radius: 10px;
-      margin-top: 1.5rem;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
+nav button#darkModeToggle:hover {
+  color: var(--accent-color);
+}
 
-    section.card {
-      background-color: var(--card-bg);
-      padding: 2rem;
-      margin: 1.5rem auto;
-      max-width: 900px;
-      border-radius: 12px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+nav .menu-toggle {
+  display: none;
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  color: var(--nav-text);
+  cursor: pointer;
+}
 
-    section.card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
+@media (max-width: 768px) {
+  nav .menu-toggle {
+    display: block;
+  }
 
-    h1, h2 {
-      color: var(--primary-color);
-    }
+  nav ul.nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: var(--nav-bg);
+    position: absolute;
+    top: 60px;
+    right: 1rem;
+    width: 200px;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px var(--card-shadow);
+    padding: 1rem;
+    z-index: 999;
+  }
 
-    .btn {
-      display: inline-block;
-      background-color: var(--btn-bg);
-      color: var(--btn-text);
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s;
-    }
+  nav ul.nav-links li {
+    text-align: center;
+    padding: 10px 0;
+  }
 
-    .btn:hover {
-      background-color: var(--btn-hover);
-    }
+  nav ul.nav-links.active {
+    display: flex;
+  }
 
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: var(--primary-color);
-      color: #cbd5e1;
-      margin-top: 3rem;
-      font-size: 0.9rem;
-    }
-  </style>
-</head>
-<body>
-  <nav>
-    <div class="logo">🚫 NarcStop AI</div>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="report.html">Report</a></li>
-      <li><a href="therapy.html">Therapy Chat</a></li>
-      <li><a href="dashboard.html">Dashboard</a></li>
-      <li><a href="resources.html">Resources</a></li>
-      <li><a href="sos.html">Relapse SOS</a></li>
-      <li><a href="feedback.html">Feedback</a></li>
-    </ul>
-    <button id="darkModeToggle">🌙</button>
-  </nav>
+  #darkModeToggle {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+  }
+}
 
-  <section class="hero">
-    <h1>Welcome to NarcStop AI</h1>
-    <p>Your one-stop platform to fight drug abuse, seek therapy, and stay informed.</p>
-    <img src="assets/hero-image.png" alt="Hero">
-  </section>
+main.page-content {
+  flex-grow: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  transition: background-color 0.4s;
+}
 
-  <section class="about card">
-    <h2>About the Campaign</h2>
-    <p>This project aims to provide awareness, support, and reporting tools against drug abuse. We enable individuals to report anonymously, seek therapy, and access verified anti-drug resources.</p>
-  </section>
+h1, h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  transition: color 0.4s;
+}
 
-  <section class="card">
-    <h2>Report Suspicious Activity</h2>
-    <p>Your identity will remain anonymous. Help us stop drug abuse in your community.</p>
-    <a href="report.html" class="btn">📢 Report Now</a>
-  </section>
+.card, .box, .about {
+  background-color: var(--card-bg);
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px var(--card-shadow);
+  margin-bottom: 2rem;
+  transition: background-color 0.4s, box-shadow 0.4s;
+}
 
-  <section class="resources card">
-    <h2>Helpful Resources</h2>
-    <ul>
-      <li><a href="https://www.narcoticsindia.nic.in/" target="_blank">Narcotics Control Bureau (NCB)</a></li>
-      <li><a href="https://www.unodc.org/" target="_blank">UNODC - United Nations Office on Drugs and Crime</a></li>
-      <li><a href="https://www.helpguide.org/articles/addictions/drug-abuse-and-addiction.htm" target="_blank">HelpGuide on Drug Abuse</a></li>
-    </ul>
-  </section>
+button, .btn {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
-  <footer>
-    <p>&copy; 2025 NarcStop AI | Designed by Hardik Manchanda</p>
-  </footer>
+button:hover, .btn:hover {
+  background-color: var(--btn-hover-bg);
+  transform: scale(1.05);
+}
 
-  <script>
-    const toggleBtn = document.getElementById("darkModeToggle");
-    if (localStorage.getItem("theme") === "dark") {
-      document.body.classList.add("dark-mode");
-      toggleBtn.textContent = "☀️";
-    }
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 
-    toggleBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-      const isDark = document.body.classList.contains("dark-mode");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-      toggleBtn.textContent = isDark ? "☀️" : "🌙";
-    });
-  </script>
-</body>
-</html>
+a:hover {
+  text-decoration: underline;
+  color: var(--accent-color);
+}
+
+footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 0.95rem;
+  margin-top: auto;
+  transition: background-color 0.4s, color 0.4s;
+}
