@@ -2,15 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Feedback – NarcStop AI</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <nav class="navbar">
-    <div class="logo">📝 NarcStop AI</div>
-    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-    <ul class="nav-links">
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <div class="logo" tabindex="0">📝 NarcStop AI</div>
+    <button
+      class="menu-toggle"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+    >☰</button>
+    <ul class="nav-links" id="primary-navigation">
       <li><a href="index.html">Home</a></li>
       <li><a href="report.html">Report</a></li>
       <li><a href="therapy.html">Therapy Chat</a></li>
@@ -19,17 +25,23 @@
       <li><a href="sos.html">Relapse SOS</a></li>
       <li><a href="feedback.html" class="active">Feedback</a></li>
     </ul>
-    <button id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
+    <button
+      id="darkModeToggle"
+      title="Toggle Dark Mode"
+      aria-pressed="false"
+      aria-label="Toggle dark mode"
+    >🌙</button>
   </nav>
 
+  <!-- Main Content -->
   <main class="page-content">
-    <h1 style="text-align:center;">💬 Share Your Feedback</h1>
-    <p style="text-align:center;">We’d love to hear what’s working for you and how we can improve.</p>
+    <h1>💬 Share Your Feedback</h1>
+    <p>We’d love to hear what’s working for you and how we can improve.</p>
 
-    <form id="feedbackForm" class="box" style="max-width: 500px; margin: auto;">
+    <form id="feedbackForm" class="box" style="max-width: 480px; margin: auto;">
       <label for="feel">How are you feeling today?</label>
-      <select id="feel" required>
-        <option value="">Select an option</option>
+      <select id="feel" name="feel" required>
+        <option value="" disabled selected>Select an option</option>
         <option value="Great">😊 Great</option>
         <option value="Okay">😌 Okay</option>
         <option value="Struggling">😞 Struggling</option>
@@ -37,54 +49,90 @@
       </select>
 
       <label for="helped">What feature helped you most?</label>
-      <input type="text" id="helped" placeholder="e.g. Therapy Chat, SOS Page" required />
+      <input
+        type="text"
+        id="helped"
+        name="helped"
+        placeholder="e.g. Therapy Chat, SOS Page"
+        required
+        autocomplete="off"
+      />
 
       <label for="suggestion">Any suggestions or messages for us?</label>
-      <textarea id="suggestion" placeholder="Tell us what you need..."></textarea>
+      <textarea
+        id="suggestion"
+        name="suggestion"
+        placeholder="Tell us what you need..."
+        rows="4"
+        aria-describedby="suggestionHelp"
+      ></textarea>
+      <small id="suggestionHelp" style="color: var(--color-muted); font-size: 0.85rem;">
+        Optional
+      </small>
 
-      <button type="submit" class="btn-primary">Submit Feedback</button>
+      <button type="submit" class="btn-primary" aria-live="polite" aria-busy="false">
+        Submit Feedback
+      </button>
     </form>
 
-    <div id="thanksMessage" class="hidden box success-msg" style="max-width: 500px; margin: 20px auto;">
+    <div
+      id="thanksMessage"
+      class="hidden box success-msg"
+      style="max-width: 480px; margin: 1rem auto; padding: 1rem; text-align: center;"
+      role="alert"
+      aria-live="assertive"
+    >
       <h3>✅ Thank you!</h3>
       <p>Your feedback helps us make NarcStop AI better for everyone.</p>
     </div>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 NarcStop AI | Your voice matters. 🌟</p>
   </footer>
 
+  <!-- Scripts -->
   <script>
-    // Mobile Menu
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    if (menuToggle && navLinks) {
-      menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-      });
-    }
-
     // Dark Mode Toggle
     const toggleBtn = document.getElementById("darkModeToggle");
-    const prefersDark = localStorage.getItem("theme") === "dark";
-    if (prefersDark) {
+    if (localStorage.getItem("theme") === "dark") {
       document.body.classList.add("dark-mode");
       toggleBtn.textContent = "☀️";
+      toggleBtn.setAttribute("aria-pressed", "true");
     }
 
-    toggleBtn?.addEventListener("click", () => {
+    toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
       const isDark = document.body.classList.contains("dark-mode");
       localStorage.setItem("theme", isDark ? "dark" : "light");
       toggleBtn.textContent = isDark ? "☀️" : "🌙";
+      toggleBtn.setAttribute("aria-pressed", isDark.toString());
     });
 
-    // Feedback Submission
-    document.getElementById("feedbackForm").addEventListener("submit", (e) => {
+    // Mobile Menu Toggle with ARIA
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      const isActive = navLinks.classList.toggle("active");
+      menuToggle.setAttribute("aria-expanded", isActive.toString());
+    });
+
+    // Feedback form submission
+    const form = document.getElementById("feedbackForm");
+    const thanksMessage = document.getElementById("thanksMessage");
+
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
-      document.getElementById("feedbackForm").classList.add("hidden");
-      document.getElementById("thanksMessage").classList.remove("hidden");
+      form.setAttribute("aria-busy", "true");
+
+      // Simulate async submission
+      setTimeout(() => {
+        form.classList.add("hidden");
+        thanksMessage.classList.remove("hidden");
+        form.setAttribute("aria-busy", "false");
+      }, 800);
     });
   </script>
 </body>
