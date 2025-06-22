@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     moodList.innerHTML = "";
     for (let [mood, count] of Object.entries(moodCounts)) {
       const li = document.createElement("li");
-      li.textContent = `${mood} ${count}x`;
+      li.textContent = `${mood} – ${count}x`;
       moodList.appendChild(li);
     }
   }
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.resetStreak = function() {
-    if (confirm("Reset your sobriety streak?")) {
+    if (confirm("Are you sure you want to reset your sobriety streak?")) {
       localStorage.setItem("sobrietyStart", new Date().toISOString());
       updateStreakDisplay();
       updateChart();
@@ -63,21 +63,20 @@ document.addEventListener("DOMContentLoaded", () => {
   updateStreakDisplay();
 
   // Chart.js setup
-  const ctx = document.getElementById('sobrietyChart').getContext('2d');
+  const ctx = document.getElementById("sobrietyChart").getContext("2d");
   const chart = new Chart(ctx, {
-    type: 'line',
+    type: "line",
     data: {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Today"],
       datasets: [{
-        label: 'Sobriety Days',
+        label: "Sobriety Days",
         data: [0, 1, 2, 3, 4, 5],
-        borderColor: '#3498db',
-        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        borderColor: "#4CAF50",
+        backgroundColor: "rgba(76, 175, 80, 0.2)",
+        borderWidth: 2,
         tension: 0.3,
         fill: true,
-        pointBackgroundColor: '#2980b9',
-        pointBorderColor: '#fff',
-        borderWidth: 2
+        pointBackgroundColor: "#2e7d32"
       }]
     },
     options: {
@@ -85,31 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
       maintainAspectRatio: false,
       scales: {
         y: {
-          beginAtZero: true,
-          ticks: {
-            color: '#333'
-          },
-          grid: {
-            color: '#ddd'
-          }
-        },
-        x: {
-          ticks: {
-            color: '#333'
-          },
-          grid: {
-            color: '#eee'
-          }
-        }
-      },
-      plugins: {
-        legend: {
-          labels: {
-            color: '#222',
-            font: {
-              weight: 'bold'
-            }
-          }
+          beginAtZero: true
         }
       }
     }
@@ -117,7 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateChart() {
     const streak = parseInt(document.querySelector("#sobrietyDays span").textContent);
-    chart.data.datasets[0].data = [0, 1, 2, 3, 4, streak];
+    const data = Array.from({ length: 6 }, (_, i) => Math.max(0, streak - (5 - i)));
+    chart.data.datasets[0].data = data;
     chart.update();
   }
 
