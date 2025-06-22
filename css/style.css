@@ -85,7 +85,10 @@ nav ul.nav-links li a {
   border-radius: 4px;
   transition: background-color 0.2s ease;
   font-weight: 600;
+  display: inline-block; /* Add this line */
+  vertical-align: middle; /* Add this line */
 }
+
 
 nav ul.nav-links li a:hover,
 nav ul.nav-links li a.active {
