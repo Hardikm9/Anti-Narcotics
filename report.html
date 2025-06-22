@@ -30,7 +30,8 @@
 <body>
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="logo">🕵️ NarcStop AI</div>
+    <div class="logo">🚫 NarcStop AI</div>
+    <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="report.html" class="active">Report</a></li>
@@ -48,7 +49,7 @@
     <h1>🕵️ Submit an Anonymous Report</h1>
     <p>Your identity will never be recorded. Help us keep communities safe and drug-free.</p>
 
-    <form id="reportForm" class="box" style="max-width: 600px; margin: 1.5rem auto;">
+    <form id="reportForm" class="box">
       <textarea name="report" id="reportInput" rows="6" placeholder="Describe narcotic activity, location, or person anonymously..." required></textarea>
       <input type="hidden" name="_captcha" value="false">
       <button type="submit" class="btn">📤 Submit Report</button>
@@ -56,21 +57,16 @@
     </form>
   </main>
 
-  <!-- Toast -->
   <div id="toast" class="toast">✅ Report submitted anonymously!</div>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2025 NarcStop AI | Protecting lives through anonymous reporting</p>
   </footer>
 
-  <!-- Dark Mode Script + Form Handling -->
+  <!-- Scripts -->
   <script>
+    // Dark Mode Toggle
     const toggleBtn = document.getElementById("darkModeToggle");
-    const form = document.getElementById("reportForm");
-    const textarea = document.getElementById("reportInput");
-    const statusText = document.getElementById("report-status");
-    const toast = document.getElementById("toast");
 
     if (localStorage.getItem("theme") === "dark") {
       document.body.classList.add("dark-mode");
@@ -83,6 +79,20 @@
       localStorage.setItem("theme", isDark ? "dark" : "light");
       toggleBtn.textContent = isDark ? "☀️" : "🌙";
     });
+
+    // Hamburger Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Form Submission Handler
+    const form = document.getElementById("reportForm");
+    const textarea = document.getElementById("reportInput");
+    const statusText = document.getElementById("report-status");
+    const toast = document.getElementById("toast");
 
     function showToast(message) {
       toast.textContent = message;
