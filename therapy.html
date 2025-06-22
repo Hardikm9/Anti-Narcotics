@@ -8,7 +8,7 @@
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+  <nav class="navbar">
     <div class="logo">🧠 NarcStop AI</div>
     <button 
       class="menu-toggle" 
@@ -19,7 +19,7 @@
     <ul class="nav-links" id="primary-navigation">
       <li><a href="index.html">Home</a></li>
       <li><a href="report.html">Report</a></li>
-      <li><a href="therapy.html" class="active" aria-current="page">Therapy Chat</a></li>
+      <li><a href="therapy.html" class="active">Therapy Chat</a></li>
       <li><a href="dashboard.html">Dashboard</a></li>
       <li><a href="resources.html">Resources</a></li>
       <li><a href="sos.html">Relapse SOS</a></li>
@@ -34,21 +34,20 @@
     <p>Chat anonymously with our AI therapy assistant. We're here to support your recovery journey.</p>
 
     <!-- Chat Embed -->
-    <section class="card" style="padding: 1rem; margin-top: 1.5rem; display: flex; justify-content: center;" aria-label="AI Therapy Chatbot">
+    <section class="card" style="padding: 1rem; margin-top: 1.5rem; display: flex; justify-content: center;">
       <iframe
         src="https://www.chatbase.co/chatbot-iframe/0xcpuX5tzydy-wZpZ44vA"
         style="height: 500px; max-width: 600px; width: 100%; border: none; border-radius: 12px;"
         frameborder="0"
         allow="clipboard-write"
         title="Therapy Chat"
-        loading="lazy"
       ></iframe>
     </section>
 
     <!-- Call Button -->
     <p style="text-align: center; margin-top: 1rem;">
       <strong>Need to talk to a real person?</strong><br />
-      <a href="tel:1933" class="btn" style="margin-top: 0.5rem;" aria-label="Call 1933 helpline in India">📞 Call 1933 (India)</a>
+      <a href="tel:1933" class="btn" style="margin-top: 0.5rem;">📞 Call 1933 (India)</a>
     </p>
   </main>
 
@@ -76,13 +75,15 @@
       toggleBtn.setAttribute("aria-pressed", isDark.toString());
     });
 
-    // Hamburger Toggle Accessibility
+    // Hamburger Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
     menuToggle.addEventListener('click', () => {
-      const isActive = navLinks.classList.toggle('active');
-      menuToggle.setAttribute('aria-expanded', isActive.toString());
+      navLinks.classList.toggle('active');
+      // Update aria-expanded properly
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', (!expanded).toString());
     });
   </script>
 </body>
