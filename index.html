@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <!-- Navigation -->
+  <!-- Navbar -->
   <nav>
     <div class="logo">🚫 NarcStop AI</div>
     <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
@@ -27,30 +27,30 @@
   <!-- Hero Section -->
   <section class="hero">
     <h1>Welcome to NarcStop AI</h1>
-    <p>Your all-in-one platform to report abuse, seek therapy, and fight addiction with knowledge.</p>
-    <img src="assets/hero-image.png" alt="Hero">
+    <p>Your trusted digital ally against drug abuse. Report anonymously, access real therapy tools, and empower yourself with verified resources.</p>
+    <img src="assets/hero-image.png" alt="Illustration representing support and reporting tools">
   </section>
 
-  <!-- About -->
+  <!-- About Section -->
   <section class="card about">
     <h2>About the Campaign</h2>
-    <p>Our mission is to provide awareness, support, and reporting tools to combat drug abuse. Anonymous reporting, real therapy tools, and helpful resources — all in one place.</p>
+    <p>NarcStop AI is a tech-powered initiative focused on education, prevention, and anonymous reporting to combat narcotic abuse. We're here to guide, support, and protect individuals and communities.</p>
   </section>
 
-  <!-- Report CTA -->
+  <!-- Call to Action -->
   <section class="card">
     <h2>Report Suspicious Activity</h2>
-    <p>100% anonymous. Help protect your community by reporting drug abuse or related activity.</p>
+    <p>Play your part in making our world drug-free. Submissions are always anonymous, quick, and secure.</p>
     <a href="report.html" class="btn">📢 Report Now</a>
   </section>
 
-  <!-- Resources -->
+  <!-- Resources Section -->
   <section class="card resources">
     <h2>Helpful Resources</h2>
     <ul>
       <li><a href="https://www.narcoticsindia.nic.in/" target="_blank">Narcotics Control Bureau (NCB)</a></li>
       <li><a href="https://www.unodc.org/" target="_blank">UNODC – United Nations Office on Drugs and Crime</a></li>
-      <li><a href="https://www.helpguide.org/articles/addictions/drug-abuse-and-addiction.htm" target="_blank">HelpGuide on Drug Abuse</a></li>
+      <li><a href="https://www.helpguide.org/articles/addictions/drug-abuse-and-addiction.htm" target="_blank">HelpGuide – Drug Abuse & Recovery</a></li>
     </ul>
   </section>
 
@@ -65,7 +65,6 @@
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
-    // Dark mode setup
     if (localStorage.getItem('theme') === 'dark') {
       document.body.classList.add('dark-mode');
       toggleBtn.textContent = '☀️';
@@ -78,7 +77,6 @@
       toggleBtn.textContent = isDark ? '☀️' : '🌙';
     });
 
-    // Mobile nav
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
