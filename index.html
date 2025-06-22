@@ -3,85 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anti-Narcotics Campaign</title>
+  <title>NarcStop AI – Anti-Narcotics Campaign</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #6366f1;
-      --bg: #f8fafc;
-      --text: #1f2937;
+      --primary: #4f46e5;
+      --background: #f9fafb;
       --card-bg: #ffffff;
-      --shadow: rgba(0, 0, 0, 0.05);
-      --btn-hover: #4f46e5;
+      --text: #111827;
+      --text-light: #6b7280;
+      --shadow: rgba(0, 0, 0, 0.06);
+      --hover: #4338ca;
     }
 
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: var(--bg);
+      background: var(--background);
       color: var(--text);
-      line-height: 1.6;
     }
 
     nav {
-      background: white;
+      background: #fff;
       padding: 1rem 2rem;
       box-shadow: 0 2px 8px var(--shadow);
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 999;
     }
 
     .logo {
+      font-size: 1.5rem;
       font-weight: 700;
-      font-size: 1.3rem;
       color: var(--primary);
     }
 
-    .nav-links {
+    ul.nav-links {
       list-style: none;
       display: flex;
       gap: 1rem;
-      padding: 0;
       margin: 0;
+      padding: 0;
     }
 
-    .nav-links a {
+    ul.nav-links li a {
       text-decoration: none;
-      color: #555;
-      font-weight: 600;
-      padding: 0.4rem 0.6rem;
+      padding: 0.5rem 0.8rem;
       border-radius: 6px;
+      font-weight: 600;
+      color: var(--text-light);
       transition: background 0.2s;
     }
 
-    .nav-links a.active,
-    .nav-links a:hover {
+    ul.nav-links li a.active,
+    ul.nav-links li a:hover {
       background: var(--primary);
       color: white;
     }
 
-    .menu-toggle {
-      display: none;
-    }
-
-    #darkModeToggle {
-      background: none;
-      border: none;
-      font-size: 1.3rem;
-      cursor: pointer;
-    }
-
     .hero {
-      text-align: center;
+      background: linear-gradient(90deg, #e0e7ff, #f3f4f6);
       padding: 3rem 2rem;
-      background: linear-gradient(to right, #c7d2fe, #e0e7ff);
+      text-align: center;
       border-radius: 12px;
       margin: 2rem auto;
       max-width: 1100px;
@@ -89,15 +78,13 @@
 
     .hero h1 {
       font-size: 2.5rem;
-      color: #111827;
       margin-bottom: 1rem;
+      color: var(--text);
     }
 
     .hero p {
       font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto;
-      color: #374151;
+      color: var(--text-light);
     }
 
     .hero img {
@@ -109,17 +96,22 @@
 
     section.card {
       background: var(--card-bg);
-      border-radius: 12px;
+      margin: 2rem auto;
       padding: 2rem;
+      border-radius: 12px;
       box-shadow: 0 8px 24px var(--shadow);
       max-width: 1100px;
-      margin: 2rem auto;
     }
 
     h2 {
-      color: var(--primary);
       font-size: 1.6rem;
+      color: var(--primary);
       margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: var(--text);
     }
 
     a.btn {
@@ -135,11 +127,11 @@
     }
 
     a.btn:hover {
-      background: var(--btn-hover);
+      background: var(--hover);
     }
 
     ul {
-      padding-left: 1.2rem;
+      padding-left: 1.5rem;
     }
 
     footer {
@@ -147,42 +139,52 @@
       padding: 1.5rem;
       font-size: 0.9rem;
       color: #6b7280;
+      background: #fff;
+      margin-top: 3rem;
+    }
+
+    #darkModeToggle {
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      margin-left: 1rem;
+    }
+
+    .menu-toggle {
+      display: none;
     }
 
     @media (max-width: 768px) {
-      .nav-links {
+      ul.nav-links {
         display: none;
         flex-direction: column;
         background: white;
         position: absolute;
         top: 64px;
         right: 2rem;
-        box-shadow: 0 4px 12px var(--shadow);
         padding: 1rem;
         border-radius: 8px;
+        box-shadow: 0 4px 12px var(--shadow);
       }
 
-      .nav-links.active {
+      ul.nav-links.active {
         display: flex;
       }
 
       .menu-toggle {
         display: block;
+        font-size: 1.5rem;
         background: none;
         border: none;
-        font-size: 1.4rem;
         cursor: pointer;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Navbar -->
   <nav>
     <div class="logo">🚫 NarcStop AI</div>
     <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
@@ -202,13 +204,13 @@
   <section class="hero">
     <h1>Welcome to NarcStop AI</h1>
     <p>Your one-stop platform to fight drug abuse, seek therapy, and stay informed. Let's build a drug-free future together.</p>
-    <img src="assets/hero-image.png" alt="Campaign Banner">
+    <img src="assets/hero-image.png" alt="Hero image">
   </section>
 
   <!-- About Section -->
   <section class="card">
     <h2>About the Campaign</h2>
-    <p>This project aims to provide awareness, support, and reporting tools against drug abuse. We enable individuals to report anonymously, seek therapy, and access verified anti-drug resources.</p>
+    <p>This project provides awareness, support, and reporting tools against drug abuse. You can report anonymously, seek therapy, and access verified anti-drug resources.</p>
   </section>
 
   <!-- Report CTA -->
@@ -223,7 +225,7 @@
     <h2>Helpful Resources</h2>
     <ul>
       <li><a href="https://www.narcoticsindia.nic.in/" target="_blank">Narcotics Control Bureau (NCB)</a></li>
-      <li><a href="https://www.unodc.org/" target="_blank">UNODC - United Nations Office on Drugs and Crime</a></li>
+      <li><a href="https://www.unodc.org/" target="_blank">UNODC – United Nations Office on Drugs and Crime</a></li>
       <li><a href="https://www.helpguide.org/articles/addictions/drug-abuse-and-addiction.htm" target="_blank">HelpGuide on Drug Abuse</a></li>
     </ul>
   </section>
@@ -233,7 +235,6 @@
     &copy; 2025 NarcStop AI | Designed by Hardik Manchanda
   </footer>
 
-  <!-- Script -->
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -254,5 +255,6 @@
       toggleBtn.textContent = isDark ? "☀️" : "🌙";
     });
   </script>
+
 </body>
 </html>
