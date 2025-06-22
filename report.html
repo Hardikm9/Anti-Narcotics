@@ -46,10 +46,10 @@
 
   <!-- Main Content -->
   <main class="page-content">
-    <h1>🕵️ Submit an Anonymous Report</h1>
-    <p>Your identity will never be recorded. Help us keep communities safe and drug-free.</p>
+    <h1 style="text-align: center;">🕵️ Submit an Anonymous Report</h1>
+    <p style="text-align: center;">Your identity will never be recorded. Help us keep communities safe and drug-free.</p>
 
-    <form id="reportForm" class="box">
+    <form id="reportForm" class="box" style="max-width: 600px; margin: 0 auto;">
       <textarea name="report" id="reportInput" rows="6" placeholder="Describe narcotic activity, location, or person anonymously..." required></textarea>
       <input type="hidden" name="_captcha" value="false">
       <button type="submit" class="btn">📤 Submit Report</button>
@@ -59,6 +59,7 @@
 
   <div id="toast" class="toast">✅ Report submitted anonymously!</div>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 NarcStop AI | Protecting lives through anonymous reporting</p>
   </footer>
@@ -67,12 +68,10 @@
   <script>
     // Dark Mode Toggle
     const toggleBtn = document.getElementById("darkModeToggle");
-
     if (localStorage.getItem("theme") === "dark") {
       document.body.classList.add("dark-mode");
       toggleBtn.textContent = "☀️";
     }
-
     toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
       const isDark = document.body.classList.contains("dark-mode");
@@ -80,15 +79,14 @@
       toggleBtn.textContent = isDark ? "☀️" : "🌙";
     });
 
-    // Hamburger Menu Toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
     });
 
-    // Form Submission Handler
+    // Form Handling
     const form = document.getElementById("reportForm");
     const textarea = document.getElementById("reportInput");
     const statusText = document.getElementById("report-status");
