@@ -6,6 +6,38 @@
   <title>Anonymous Report – NarcStop AI</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
+    html, body {
+      height: 100%;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+
+    main.page-content {
+      flex-grow: 1;
+      padding: 2rem 1rem;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 140px;
+      font-size: 1rem;
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: 1.5px solid #ccc;
+      background-color: var(--card-bg);
+      color: var(--text-color);
+    }
+
     .toast {
       position: fixed;
       bottom: 30px;
@@ -30,35 +62,36 @@
 </head>
 <body>
   <!-- Navbar -->
- <nav>
-  <div class="logo">🚫 NarcStop AI</div>
-  <div class="right-nav">
-    <button id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
-    <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="report.html">Report</a></li>
-      <li><a href="therapy.html">Therapy Chat</a></li>
-      <li><a href="dashboard.html">Dashboard</a></li>
-      <li><a href="resources.html">Resources</a></li>
-      <li><a href="sos.html">Relapse SOS</a></li>
-      <li><a href="feedback.html">Feedback</a></li>
-    </ul>
-  </div>
-</nav>
-
+  <nav>
+    <div class="logo">🚫 NarcStop AI</div>
+    <div class="right-nav" style="display: flex; align-items: center; gap: 1rem;">
+      <button id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
+      <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="report.html" class="active">Report</a></li>
+        <li><a href="therapy.html">Therapy Chat</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="sos.html">Relapse SOS</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <!-- Main Content -->
-  <main class="page-content" style="max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem;">
-    <h1 style="text-align: center;">🕵️ Submit an Anonymous Report</h1>
-    <p style="text-align: center;">Your identity will never be recorded. Help us keep communities safe and drug-free.</p>
+  <main class="page-content">
+    <section class="card">
+      <h2 style="text-align: center;">🕵️ Submit an Anonymous Report</h2>
+      <p style="text-align: center;">Your identity will never be recorded. Help us keep communities safe and drug-free.</p>
 
-    <form id="reportForm" class="box" style="max-width: 600px; margin: 2rem auto;">
-      <textarea name="report" id="reportInput" rows="6" placeholder="Describe narcotic activity, location, or person anonymously..." required></textarea>
-      <input type="hidden" name="_captcha" value="false">
-      <button type="submit" class="btn">📤 Submit Report</button>
-      <p id="report-status" class="status-text"></p>
-    </form>
+      <form id="reportForm">
+        <textarea name="report" id="reportInput" placeholder="Describe narcotic activity, location, or person anonymously..." required></textarea>
+        <input type="hidden" name="_captcha" value="false">
+        <button type="submit" class="btn">📤 Submit Report</button>
+        <p id="report-status" class="status-text"></p>
+      </form>
+    </section>
   </main>
 
   <!-- Toast -->
@@ -71,7 +104,6 @@
 
   <!-- Scripts -->
   <script>
-    // Dark Mode
     const toggleBtn = document.getElementById("darkModeToggle");
     if (localStorage.getItem("theme") === "dark") {
       document.body.classList.add("dark-mode");
@@ -84,14 +116,12 @@
       toggleBtn.textContent = isDark ? "☀️" : "🌙";
     });
 
-    // Mobile Menu
     const menuToggle = document.querySelector(".menu-toggle");
     const navLinks = document.querySelector(".nav-links");
     menuToggle.addEventListener("click", () => {
       navLinks.classList.toggle("active");
     });
 
-    // Form Submission
     const form = document.getElementById("reportForm");
     const textarea = document.getElementById("reportInput");
     const statusText = document.getElementById("report-status");
