@@ -9,6 +9,7 @@
 <body>
   <nav class="navbar">
     <div class="logo">📝 NarcStop AI</div>
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="report.html">Report</a></li>
@@ -55,52 +56,36 @@
   </footer>
 
   <script>
+    // Mobile Menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+    }
+
     // Dark Mode Toggle
     const toggleBtn = document.getElementById("darkModeToggle");
     const prefersDark = localStorage.getItem("theme") === "dark";
-
     if (prefersDark) {
       document.body.classList.add("dark-mode");
       toggleBtn.textContent = "☀️";
     }
 
-    toggleBtn.addEventListener("click", () => {
+    toggleBtn?.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
       const isDark = document.body.classList.contains("dark-mode");
       localStorage.setItem("theme", isDark ? "dark" : "light");
       toggleBtn.textContent = isDark ? "☀️" : "🌙";
     });
 
-    // Form Submission
+    // Feedback Submission
     document.getElementById("feedbackForm").addEventListener("submit", (e) => {
       e.preventDefault();
       document.getElementById("feedbackForm").classList.add("hidden");
       document.getElementById("thanksMessage").classList.remove("hidden");
     });
   </script>
-  <script>
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-  }
-
-  const toggleBtn = document.getElementById("darkModeToggle");
-  const prefersDark = localStorage.getItem("theme") === "dark";
-  if (prefersDark) {
-    document.body.classList.add("dark-mode");
-    toggleBtn.textContent = "☀️";
-  }
-
-  toggleBtn?.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    const isDark = document.body.classList.contains("dark-mode");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-    toggleBtn.textContent = isDark ? "☀️" : "🌙";
-  });
-</script>
-
 </body>
 </html>
