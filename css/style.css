@@ -299,3 +299,30 @@ footer {
     border: none;
   }
 }
+/* Mobile menu button show only on small screens */
+nav .menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  nav ul.nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: var(--nav-bg);
+    position: absolute;
+    top: 60px;
+    right: 1rem;
+    width: 200px;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px var(--card-shadow);
+    padding: 1rem;
+  }
+
+  nav ul.nav-links.active {
+    display: flex;
+  }
+
+  nav .menu-toggle {
+    display: block;
+  }
+}
