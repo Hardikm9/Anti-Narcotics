@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NarcStop AI – Anti-Narcotics Campaign</title>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="assets/images/favicon.ico" />
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
 </head>
 <body>
+
   <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">🚫 NarcStop AI</div>
@@ -15,73 +16,72 @@
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="report.html">Report</a></li>
-      <li><a href="therapy.html">Therapy</a></li>
+      <li><a href="therapy.html">Therapy Chat</a></li>
       <li><a href="dashboard.html">Dashboard</a></li>
       <li><a href="resources.html">Resources</a></li>
-      <li><a href="sos.html">SOS</a></li>
+      <li><a href="sos.html">Relapse SOS</a></li>
       <li><a href="feedback.html">Feedback</a></li>
     </ul>
-    <button id="darkModeToggle">🌙</button>
+    <button id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
   </nav>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section class="hero card">
-    <h1>Welcome to NarcStop AI</h1>
+    <h1>🌟 Welcome to NarcStop AI</h1>
     <p>Your one-stop platform to fight drug abuse, seek therapy, and stay informed.</p>
-    <img src="assets/hero-image.png" alt="Campaign" />
-    <a href="report.html" class="btn">📢 Report Now</a>
+    <img src="assets/hero-image.png" alt="Anti Narcotics Hero" style="max-width: 100%; border-radius: 10px; margin-top: 1rem;">
   </section>
 
-  <!-- About -->
+  <!-- About Section -->
+  <section class="card about">
+    <h2>📢 About the Campaign</h2>
+    <p>We're on a mission to combat drug abuse by offering awareness, anonymous reporting tools, therapy access, and verified resources. Join us in building a safer, drug-free community.</p>
+  </section>
+
+  <!-- Report CTA -->
   <section class="card">
-    <h2>About the Campaign</h2>
-    <p>This project provides awareness, support, and reporting tools against drug abuse. We enable individuals to report anonymously, seek therapy, and access verified resources.</p>
-  </section>
-
-  <!-- Resources -->
-  <section class="card">
-    <h2>Helpful Resources</h2>
-    <ul>
-      <li><a href="https://www.narcoticsindia.nic.in/" target="_blank">Narcotics Control Bureau</a></li>
-      <li><a href="https://www.unodc.org/" target="_blank">UNODC – United Nations</a></li>
-      <li><a href="https://www.helpguide.org/articles/addictions/drug-abuse-and-addiction.htm" target="_blank">HelpGuide</a></li>
-    </ul>
-  </section>
-
-  <!-- Call to Action -->
-  <section class="card highlight">
-    <h2>🕵️ Report Suspicious Activity</h2>
+    <h2>🕵️ Report Narcotic Activity</h2>
     <p>Your identity will remain anonymous. Help us stop drug abuse in your community.</p>
-    <a href="report.html" class="btn">Submit Report</a>
+    <a href="report.html" class="btn">📤 Report Now</a>
+  </section>
+
+  <!-- Resources Section -->
+  <section class="card">
+    <h2>📚 Trusted Resources</h2>
+    <ul>
+      <li><a href="https://www.narcoticsindia.nic.in/" target="_blank">Narcotics Control Bureau (NCB)</a></li>
+      <li><a href="https://www.unodc.org/" target="_blank">UNODC - United Nations Office on Drugs and Crime</a></li>
+      <li><a href="https://www.helpguide.org/articles/addictions/drug-abuse-and-addiction.htm" target="_blank">HelpGuide on Drug Abuse</a></li>
+    </ul>
   </section>
 
   <!-- Footer -->
-  <footer class="card footer">
-    <p>&copy; 2025 NarcStop AI | Built by Hardik Manchanda</p>
+  <footer>
+    <p>&copy; 2025 NarcStop AI | Designed by Hardik Manchanda</p>
   </footer>
 
-  <!-- JS -->
+  <!-- JS for Dark Mode + Nav -->
   <script>
-    // Mobile Nav
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-
-    // Dark Mode
+    // Dark mode toggle
     const toggleBtn = document.getElementById("darkModeToggle");
     if (localStorage.getItem("theme") === "dark") {
       document.body.classList.add("dark-mode");
       toggleBtn.textContent = "☀️";
     }
-
     toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
       const isDark = document.body.classList.contains("dark-mode");
       localStorage.setItem("theme", isDark ? "dark" : "light");
       toggleBtn.textContent = isDark ? "☀️" : "🌙";
     });
+
+    // Mobile nav toggle
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
   </script>
+
 </body>
 </html>
