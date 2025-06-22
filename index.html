@@ -4,86 +4,98 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NarcStop AI – Anti-Narcotics Campaign</title>
-  <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #4f46e5;
-      --background: #f9fafb;
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --background: #f0f4f8;
       --card-bg: #ffffff;
       --text: #111827;
       --text-light: #6b7280;
-      --shadow: rgba(0, 0, 0, 0.06);
+      --shadow: rgba(0, 0, 0, 0.08);
       --hover: #4338ca;
     }
 
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Inter', sans-serif;
       background: var(--background);
       color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
     nav {
       background: #fff;
       padding: 1rem 2rem;
-      box-shadow: 0 2px 8px var(--shadow);
+      box-shadow: 0 4px 12px var(--shadow);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
       position: sticky;
       top: 0;
-      z-index: 999;
+      z-index: 1000;
     }
 
     .logo {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: 700;
       color: var(--primary);
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
     }
 
     ul.nav-links {
       list-style: none;
       display: flex;
-      gap: 1rem;
-      margin: 0;
-      padding: 0;
+      gap: 1.2rem;
     }
 
     ul.nav-links li a {
       text-decoration: none;
-      padding: 0.5rem 0.8rem;
-      border-radius: 6px;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
       font-weight: 600;
       color: var(--text-light);
-      transition: background 0.2s;
+      transition: background 0.3s, color 0.3s;
     }
 
     ul.nav-links li a.active,
     ul.nav-links li a:hover {
       background: var(--primary);
-      color: white;
+      color: #fff;
     }
 
     .hero {
-      background: linear-gradient(90deg, #e0e7ff, #f3f4f6);
-      padding: 3rem 2rem;
+      background: linear-gradient(120deg, #dbeafe, #f0f4ff);
+      padding: 5rem 2rem;
       text-align: center;
-      border-radius: 12px;
+      border-radius: 20px;
       margin: 2rem auto;
-      max-width: 1100px;
+      max-width: 1200px;
+      box-shadow: 0 10px 20px var(--shadow);
+      animation: fadeIn 1s ease-out;
     }
 
     .hero h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-bottom: 1rem;
       color: var(--text);
     }
 
     .hero p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: var(--text-light);
     }
 
@@ -91,103 +103,69 @@
       margin-top: 2rem;
       max-width: 100%;
       border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .hero img:hover {
+      transform: scale(1.02);
     }
 
     section.card {
       background: var(--card-bg);
       margin: 2rem auto;
       padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px var(--shadow);
+      border-radius: 16px;
+      box-shadow: 0 6px 16px var(--shadow);
       max-width: 1100px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    section.card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px var(--shadow);
     }
 
     h2 {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       color: var(--primary);
       margin-bottom: 1rem;
-    }
-
-    p {
-      font-size: 1rem;
-      color: var(--text);
     }
 
     a.btn {
       display: inline-block;
       background: var(--primary);
       color: white;
-      padding: 0.6rem 1.4rem;
+      padding: 0.7rem 1.5rem;
       font-weight: 600;
       border-radius: 8px;
       text-decoration: none;
       margin-top: 1rem;
-      transition: background 0.3s ease;
+      transition: background 0.3s;
     }
 
     a.btn:hover {
       background: var(--hover);
     }
 
-    ul {
-      padding-left: 1.5rem;
-    }
-
     footer {
       text-align: center;
-      padding: 1.5rem;
-      font-size: 0.9rem;
-      color: #6b7280;
+      padding: 2rem;
+      font-size: 0.95rem;
+      color: var(--text-light);
       background: #fff;
-      margin-top: 3rem;
+      box-shadow: 0 -2px 8px var(--shadow);
     }
 
-    #darkModeToggle {
-      background: none;
-      border: none;
-      font-size: 1.3rem;
-      cursor: pointer;
-      margin-left: 1rem;
-    }
-
-    .menu-toggle {
-      display: none;
-    }
-
-    @media (max-width: 768px) {
-      ul.nav-links {
-        display: none;
-        flex-direction: column;
-        background: white;
-        position: absolute;
-        top: 64px;
-        right: 2rem;
-        padding: 1rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px var(--shadow);
-      }
-
-      ul.nav-links.active {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: block;
-        font-size: 1.5rem;
-        background: none;
-        border: none;
-        cursor: pointer;
-      }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-
-  <!-- Navbar -->
   <nav>
     <div class="logo">🚫 NarcStop AI</div>
-    <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="report.html">Report</a></li>
@@ -197,30 +175,25 @@
       <li><a href="sos.html">Relapse SOS</a></li>
       <li><a href="feedback.html">Feedback</a></li>
     </ul>
-    <button id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
   </nav>
 
-  <!-- Hero Section -->
   <section class="hero">
     <h1>Welcome to NarcStop AI</h1>
-    <p>Your one-stop platform to fight drug abuse, seek therapy, and stay informed. Let's build a drug-free future together.</p>
+    <p>Your one-stop platform to fight drug abuse, seek therapy, and stay informed.</p>
     <img src="assets/hero-image.png" alt="Hero image">
   </section>
 
-  <!-- About Section -->
   <section class="card">
     <h2>About the Campaign</h2>
-    <p>This project provides awareness, support, and reporting tools against drug abuse. You can report anonymously, seek therapy, and access verified anti-drug resources.</p>
+    <p>This project provides awareness, support, and reporting tools against drug abuse. Report anonymously, seek therapy, and access verified anti-drug resources.</p>
   </section>
 
-  <!-- Report CTA -->
   <section class="card">
     <h2>Report Suspicious Activity</h2>
     <p>Your identity will remain anonymous. Help us stop drug abuse in your community.</p>
     <a href="report.html" class="btn">📢 Report Now</a>
   </section>
 
-  <!-- Resources Section -->
   <section class="card">
     <h2>Helpful Resources</h2>
     <ul>
@@ -230,31 +203,8 @@
     </ul>
   </section>
 
-  <!-- Footer -->
   <footer>
     &copy; 2025 NarcStop AI | Designed by Hardik Manchanda
   </footer>
-
-  <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-
-    const toggleBtn = document.getElementById("darkModeToggle");
-    if (localStorage.getItem("theme") === "dark") {
-      document.body.classList.add("dark-mode");
-      toggleBtn.textContent = "☀️";
-    }
-
-    toggleBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-      const isDark = document.body.classList.contains("dark-mode");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-      toggleBtn.textContent = isDark ? "☀️" : "🌙";
-    });
-  </script>
-
 </body>
 </html>
