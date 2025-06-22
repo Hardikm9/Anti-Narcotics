@@ -67,7 +67,6 @@
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
-    // Dark mode
     if (localStorage.getItem('theme') === 'dark') {
       document.body.classList.add('dark-mode');
       toggleBtn.textContent = '☀️';
@@ -80,7 +79,6 @@
       toggleBtn.textContent = isDark ? '☀️' : '🌙';
     });
 
-    // Mobile menu toggle
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
