@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <!-- Navbar -->
   <nav class="navbar">
-    <div class="logo">🧠 NarcStop AI</div>
+    <div class="logo">🚫 NarcStop AI</div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="report.html">Report</a></li>
@@ -21,75 +22,25 @@
     <button id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
   </nav>
 
+  <!-- Main Content -->
   <main class="page-content">
-    <h1>AI Therapy Assistant</h1>
-    <p>Your personal support guide. Share how you feel. Get real help.</p>
-
-    <!-- Hero Image -->
-    <img src="assets/hero-image.png" alt="Therapy Illustration" style="width:100%; max-height:300px; object-fit:cover; border-radius:10px; margin-bottom: 1rem;" />
-
-    <div id="chatWindow" class="chat-window" aria-live="polite" aria-label="Chat messages">
-      <div class="chat-bubble bot">
-        <img src="assets/bot-avatar.png" alt="Bot avatar" />
-        <p>Hey there! I'm here to support you. How are you feeling today?</p>
-      </div>
-    </div>
-
-    <form id="chatForm" class="chat-form" aria-label="Send message form">
-      <input type="text" id="chatInput" placeholder="Type your message..." required autocomplete="off" />
-      <button type="submit">Send</button>
-    </form>
+    <h1>🧠 Therapy Chat</h1>
+    <p>Welcome to NarcStop AI's therapy support. Chat anonymously with our AI therapy assistant.</p>
+    <p style="margin-top: 1rem;"><strong>Need human help?</strong> <a href="mailto:narcstop-support@email.com" class="btn">👤 Talk to a real person</a></p>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 NarcStop AI | We're here for your recovery journey 💙</p>
+    <p>&copy; 2025 NarcStop AI | Providing mental health support and guidance</p>
   </footer>
 
+  <!-- Dark Mode Script -->
   <script>
-    const chatWindow = document.getElementById('chatWindow');
-
-    function addMessage(message, sender = 'user') {
-      const bubble = document.createElement('div');
-      bubble.className = `chat-bubble ${sender}`;
-      bubble.innerHTML = `
-        <img src="assets/${sender}-avatar.png" alt="${sender === 'bot' ? 'Bot avatar' : 'User avatar'}" />
-        <p>${message}</p>
-      `;
-      chatWindow.appendChild(bubble);
-      chatWindow.scrollTop = chatWindow.scrollHeight;
-    }
-
-    document.getElementById('chatForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const input = document.getElementById('chatInput');
-      const msg = input.value.trim();
-      if (!msg) return;
-
-      addMessage(msg, 'user');
-      input.value = '';
-
-      addMessage('Typing...', 'bot');
-      const bubbles = document.querySelectorAll('.bot');
-      const typingBubble = bubbles[bubbles.length - 1];
-
-      try {
-        const res = await fetch('/api/chatbot', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: msg })
-        });
-
-        const data = await res.json();
-        typingBubble.remove();
-        addMessage(data.reply, 'bot');
-      } catch (err) {
-        typingBubble.remove();
-        addMessage('Sorry, something went wrong. Please try again later.', 'bot');
-      }
-    });
-
-    // Dark mode toggle with persistence
     const toggleBtn = document.getElementById("darkModeToggle");
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+      toggleBtn.textContent = "☀️";
+    }
 
     toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
@@ -97,11 +48,13 @@
       localStorage.setItem("theme", isDark ? "dark" : "light");
       toggleBtn.textContent = isDark ? "☀️" : "🌙";
     });
+  </script>
 
-    if (localStorage.getItem("theme") === "dark") {
-      document.body.classList.add("dark-mode");
-      toggleBtn.textContent = "☀️";
-    }
+  <!-- Chatbase Embed -->
+  <script src="https://www.chatbase.co/embed.min.js"
+          chatbotId="0xcpuX5tzydy-wZpZ44vA"
+          domain="www.chatbase.co"
+          defer>
   </script>
 </body>
 </html>
