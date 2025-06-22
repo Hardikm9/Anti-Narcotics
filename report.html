@@ -21,6 +21,7 @@
       transition: all 0.4s ease;
       z-index: 1000;
     }
+
     .toast.show {
       opacity: 1;
       transform: translateY(0);
@@ -28,6 +29,7 @@
   </style>
 </head>
 <body>
+
   <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">🚫 NarcStop AI</div>
@@ -57,6 +59,7 @@
     </form>
   </main>
 
+  <!-- Toast Notification -->
   <div id="toast" class="toast">✅ Report submitted anonymously!</div>
 
   <!-- Footer -->
@@ -79,14 +82,14 @@
       toggleBtn.textContent = isDark ? "☀️" : "🌙";
     });
 
-    // Mobile Menu Toggle
+    // Mobile Nav Toggle
     const menuToggle = document.querySelector(".menu-toggle");
     const navLinks = document.querySelector(".nav-links");
     menuToggle.addEventListener("click", () => {
       navLinks.classList.toggle("active");
     });
 
-    // Form Handling
+    // Form Submission
     const form = document.getElementById("reportForm");
     const textarea = document.getElementById("reportInput");
     const statusText = document.getElementById("report-status");
@@ -124,5 +127,6 @@
       }
     });
   </script>
+
 </body>
 </html>
