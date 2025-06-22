@@ -3,70 +3,85 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NarcStop AI – Anti-Narcotics</title>
+  <title>NarcStop AI – Anti-Narcotics Campaign</title>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="assets/images/favicon.ico" />
 </head>
 <body>
   <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">🚫 NarcStop AI</div>
-    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
     <ul class="nav-links">
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#report">Report</a></li>
-      <li><a href="#resources">Resources</a></li>
-      <li><a href="#sos">Relapse SOS</a></li>
-      <li><a href="#feedback">Feedback</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="report.html">Report</a></li>
+      <li><a href="therapy.html">Therapy</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="sos.html">SOS</a></li>
+      <li><a href="feedback.html">Feedback</a></li>
     </ul>
-    <button id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
+    <button id="darkModeToggle">🌙</button>
   </nav>
 
-  <main>
-    <section id="home" class="hero card">
-      <h1>Welcome to NarcStop AI</h1>
-      <p>Your one-stop platform to fight drug abuse, seek support, and take action.</p>
-      <a href="#report" class="btn">📢 Report Now</a>
-    </section>
+  <!-- Hero -->
+  <section class="hero card">
+    <h1>Welcome to NarcStop AI</h1>
+    <p>Your one-stop platform to fight drug abuse, seek therapy, and stay informed.</p>
+    <img src="assets/hero-image.png" alt="Campaign" />
+    <a href="report.html" class="btn">📢 Report Now</a>
+  </section>
 
-    <section id="about" class="card">
-      <h2>About the Campaign</h2>
-      <p>We empower communities to anonymously report suspicious activity, provide therapy support, and share trusted resources.</p>
-    </section>
+  <!-- About -->
+  <section class="card">
+    <h2>About the Campaign</h2>
+    <p>This project provides awareness, support, and reporting tools against drug abuse. We enable individuals to report anonymously, seek therapy, and access verified resources.</p>
+  </section>
 
-    <section id="report" class="card highlight">
-      <h2>🕵️ Report Suspicious Activity</h2>
-      <p>Submit tips anonymously. Make a difference without fear.</p>
-      <a href="report.html" class="btn">Report Now</a>
-    </section>
+  <!-- Resources -->
+  <section class="card">
+    <h2>Helpful Resources</h2>
+    <ul>
+      <li><a href="https://www.narcoticsindia.nic.in/" target="_blank">Narcotics Control Bureau</a></li>
+      <li><a href="https://www.unodc.org/" target="_blank">UNODC – United Nations</a></li>
+      <li><a href="https://www.helpguide.org/articles/addictions/drug-abuse-and-addiction.htm" target="_blank">HelpGuide</a></li>
+    </ul>
+  </section>
 
-    <section id="resources" class="card">
-      <h2>📚 Helpful Resources</h2>
-      <ul>
-        <li><a href="https://www.narcoticsindia.nic.in/" target="_blank">NCB – India</a></li>
-        <li><a href="https://www.unodc.org/" target="_blank">UNODC</a></li>
-        <li><a href="https://www.helpguide.org/articles/addictions/drug-abuse-and-addiction.htm" target="_blank">HelpGuide</a></li>
-      </ul>
-    </section>
+  <!-- Call to Action -->
+  <section class="card highlight">
+    <h2>🕵️ Report Suspicious Activity</h2>
+    <p>Your identity will remain anonymous. Help us stop drug abuse in your community.</p>
+    <a href="report.html" class="btn">Submit Report</a>
+  </section>
 
-    <section id="sos" class="card">
-      <h2>🚨 Relapse SOS</h2>
-      <p>Grounding tools and support when you need them most.</p>
-      <a href="sos.html" class="btn">Get Help</a>
-    </section>
-
-    <section id="feedback" class="card">
-      <h2>💬 Feedback</h2>
-      <p>Your ideas help us grow. Share your experience!</p>
-      <a href="feedback.html" class="btn">Give Feedback</a>
-    </section>
-  </main>
-
+  <!-- Footer -->
   <footer class="card footer">
-    <p>&copy; 2025 NarcStop AI | Designed by Hardik Manchanda</p>
+    <p>&copy; 2025 NarcStop AI | Built by Hardik Manchanda</p>
   </footer>
 
-  <script src="js/main.js"></script>
+  <!-- JS -->
+  <script>
+    // Mobile Nav
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Dark Mode
+    const toggleBtn = document.getElementById("darkModeToggle");
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+      toggleBtn.textContent = "☀️";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      toggleBtn.textContent = isDark ? "☀️" : "🌙";
+    });
+  </script>
 </body>
 </html>
