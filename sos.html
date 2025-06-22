@@ -7,8 +7,10 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">🆘 NarcStop AI</div>
+    <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="report.html">Report</a></li>
@@ -21,15 +23,16 @@
     <button id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
   </nav>
 
+  <!-- Main Content -->
   <main class="page-content">
     <h1>🚨 Relapse SOS Center</h1>
     <p>If you’re in crisis or feel like relapsing, use these tools to ground yourself. You’re not alone.</p>
 
-    <section class="sos-buttons box">
-      <button class="btn" onclick="playTune()">🎧 Play Relaxing Tune</button>
-      <button class="btn" onclick="stopTune()">⏹️ Stop Tune</button>
-      <button class="btn" onclick="showAffirmation()">💬 Show Affirmation</button>
-      <button class="btn" onclick="redirectToTherapy()">🗨️ Talk to AI</button>
+    <section class="sos-buttons">
+      <button class="sos-btn" onclick="playTune()">🎧 Play Relaxing Tune</button>
+      <button class="sos-btn" onclick="stopTune()">⏹️ Stop Tune</button>
+      <button class="sos-btn" onclick="showAffirmation()">💬 Show Affirmation</button>
+      <button class="sos-btn" onclick="redirectToTherapy()">🗨️ Talk to AI</button>
     </section>
 
     <section id="affirmationBox" class="hidden box">
@@ -56,11 +59,14 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 NarcStop AI | You’re not weak, you’re healing. 💖</p>
   </footer>
 
+  <!-- Scripts -->
   <script>
+    // Relaxing audio
     const relaxingAudio = new Audio("https://www.bensound.com/bensound-music/bensound-slowmotion.mp3");
     relaxingAudio.loop = true;
 
@@ -89,7 +95,13 @@
       window.location.href = "therapy.html";
     }
 
+    // Dark Mode Toggle
     const toggleBtn = document.getElementById("darkModeToggle");
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+      toggleBtn.textContent = "☀️";
+    }
+
     toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
       const isDark = document.body.classList.contains("dark-mode");
@@ -97,10 +109,12 @@
       toggleBtn.textContent = isDark ? "☀️" : "🌙";
     });
 
-    if (localStorage.getItem("theme") === "dark") {
-      document.body.classList.add("dark-mode");
-      toggleBtn.textContent = "☀️";
-    }
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
   </script>
 </body>
 </html>
