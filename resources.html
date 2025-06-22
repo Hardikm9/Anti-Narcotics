@@ -9,6 +9,7 @@
 <body>
   <nav class="navbar">
     <div class="logo">📚 NarcStop AI</div>
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="report.html">Report</a></li>
@@ -65,9 +66,12 @@
   </footer>
 
   <script>
-    // Dark mode toggle with persistence
+    // Dark mode toggle
     const toggleBtn = document.getElementById("darkModeToggle");
-
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+      toggleBtn.textContent = "☀️";
+    }
     toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
       const isDark = document.body.classList.contains("dark-mode");
@@ -75,10 +79,12 @@
       toggleBtn.textContent = isDark ? "☀️" : "🌙";
     });
 
-    if (localStorage.getItem("theme") === "dark") {
-      document.body.classList.add("dark-mode");
-      toggleBtn.textContent = "☀️";
-    }
+    // Mobile nav toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle?.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
   </script>
 </body>
 </html>
