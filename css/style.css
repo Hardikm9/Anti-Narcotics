@@ -7,20 +7,20 @@
 
 /* Root colors for light and dark themes */
 :root {
-  --primary-color: #2d6cdf;
-  --primary-light: #cbe3ff;
-  --background-color: #f5f7fa;
-  --text-color: #222;
-  --nav-bg: #0d1b2a;
-  --nav-text: #fff;
-  --card-bg: #fff;
-  --card-shadow: rgba(0, 0, 0, 0.1);
-  --btn-bg: #2d6cdf;
-  --btn-text: #fff;
-  --btn-hover-bg: #1a47b8;
-  --link-color: #2d6cdf;
-  --footer-bg: #0d1b2a;
-  --footer-text: #aaa;
+  --primary-color: #1e40af;
+  --primary-light: #dbeafe;
+  --background-color: #ffffff;
+  --text-color: #1a1a1a;
+  --nav-bg: #1e293b;
+  --nav-text: #ffffff;
+  --card-bg: #f9fafb;
+  --card-shadow: rgba(0, 0, 0, 0.05);
+  --btn-bg: #1e40af;
+  --btn-text: #ffffff;
+  --btn-hover-bg: #1c3aa9;
+  --link-color: #1e40af;
+  --footer-bg: #1e293b;
+  --footer-text: #cccccc;
 }
 
 /* Dark mode overrides */
@@ -322,6 +322,20 @@ nav .menu-toggle {
     display: flex;
   }
 
+  nav .menu-toggle {
+    display: block;
+  }
+}
+nav .menu-toggle {
+  display: none;
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  color: var(--nav-text);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
   nav .menu-toggle {
     display: block;
   }
