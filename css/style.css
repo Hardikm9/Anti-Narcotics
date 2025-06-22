@@ -25,19 +25,20 @@
 
 /* Dark mode overrides */
 body.dark-mode {
-  --background-color: #121722;
-  --text-color: #ddd;
-  --nav-bg: #1f2a44;
-  --nav-text: #eee;
-  --card-bg: #1e2638;
-  --card-shadow: rgba(0, 0, 0, 0.5);
-  --btn-bg: #3a61d8;
-  --btn-text: #eee;
-  --btn-hover-bg: #5479ff;
-  --link-color: #79a8ff;
-  --footer-bg: #1f2a44;
-  --footer-text: #666;
+  --background-color: #0d1117;
+  --text-color: #c9d1d9;
+  --nav-bg: #161b22;
+  --nav-text: #f0f6fc;
+  --card-bg: #1c2128;
+  --card-shadow: rgba(255, 255, 255, 0.05);
+  --btn-bg: #238636;
+  --btn-text: #ffffff;
+  --btn-hover-bg: #2ea043;
+  --link-color: #58a6ff;
+  --footer-bg: #161b22;
+  --footer-text: #8b949e;
 }
+
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
