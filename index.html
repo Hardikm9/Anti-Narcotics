@@ -8,10 +8,8 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <!-- Navigation -->
- <nav>
-  <div class="logo">🚫 NarcStop AI</div>
-  <div class="right-nav">
+  <nav>
+    <div class="logo">🚫 NarcStop AI</div>
     <button id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
     <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
     <ul class="nav-links">
@@ -23,31 +21,28 @@
       <li><a href="sos.html">Relapse SOS</a></li>
       <li><a href="feedback.html">Feedback</a></li>
     </ul>
-  </div>
-</nav>
+  </nav>
 
-
-  <!-- Hero Section -->
-  <section class="hero card">
+  <section class="hero">
     <h1>Welcome to NarcStop AI</h1>
     <p>Your one-stop platform to fight drug abuse, seek therapy, and stay informed.</p>
-    <img src="assets/hero-image.png" alt="Hero">
+    <img src="assets/hero-image.png" alt="Hero" />
   </section>
 
-  <!-- About Section -->
   <section class="card about">
     <h2>About the Campaign</h2>
-    <p>This project provides awareness, support, and reporting tools against drug abuse. Report anonymously, seek therapy, and access verified resources.</p>
+    <p>
+      This project provides awareness, support, and reporting tools against drug abuse.
+      Report anonymously, seek therapy, and access verified resources.
+    </p>
   </section>
 
-  <!-- Report CTA -->
   <section class="card">
     <h2>Report Suspicious Activity</h2>
     <p>Your identity will remain anonymous. Help us stop drug abuse in your community.</p>
     <a href="report.html" class="btn">📢 Report Now</a>
   </section>
 
-  <!-- Resources -->
   <section class="card resources">
     <h2>Helpful Resources</h2>
     <ul>
@@ -57,22 +52,22 @@
     </ul>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2025 NarcStop AI | Designed by Hardik Manchanda</p>
   </footer>
 
-  <!-- Scripts -->
   <script>
     const toggleBtn = document.getElementById('darkModeToggle');
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
+    // Restore theme
     if (localStorage.getItem('theme') === 'dark') {
       document.body.classList.add('dark-mode');
       toggleBtn.textContent = '☀️';
     }
 
+    // Toggle dark mode
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
       const isDark = document.body.classList.contains('dark-mode');
@@ -80,6 +75,7 @@
       toggleBtn.textContent = isDark ? '☀️' : '🌙';
     });
 
+    // Toggle nav menu on mobile
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
