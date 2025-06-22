@@ -10,6 +10,7 @@
   <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">🧠 NarcStop AI</div>
+    <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="report.html">Report</a></li>
@@ -50,8 +51,9 @@
     <p>&copy; 2025 NarcStop AI | Providing mental health support and guidance</p>
   </footer>
 
-  <!-- Dark Mode Script -->
+  <!-- Scripts -->
   <script>
+    // Dark Mode Toggle
     const toggleBtn = document.getElementById("darkModeToggle");
 
     if (localStorage.getItem("theme") === "dark") {
@@ -64,6 +66,14 @@
       const isDark = document.body.classList.contains("dark-mode");
       localStorage.setItem("theme", isDark ? "dark" : "light");
       toggleBtn.textContent = isDark ? "☀️" : "🌙";
+    });
+
+    // Hamburger Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
     });
   </script>
 </body>
