@@ -5,6 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Anonymous Report – NarcStop AI</title>
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #28a745;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+      z-index: 1000;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar">
@@ -33,6 +54,8 @@
     </form>
   </main>
 
+  <div id="toast" class="toast">✅ Report submitted anonymously!</div>
+
   <footer>
     <p>&copy; 2025 NarcStop AI | Protecting lives through anonymous reporting</p>
   </footer>
@@ -42,14 +65,13 @@
     const form = document.getElementById("reportForm");
     const textarea = document.getElementById("reportInput");
     const statusText = document.getElementById("report-status");
+    const toast = document.getElementById("toast");
 
-    // Apply saved theme
     if (localStorage.getItem("theme") === "dark") {
       document.body.classList.add("dark-mode");
       darkBtn.textContent = "☀️";
     }
 
-    // Dark mode toggle
     darkBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
       const isDark = document.body.classList.contains("dark-mode");
@@ -57,7 +79,12 @@
       darkBtn.textContent = isDark ? "☀️" : "🌙";
     });
 
-    // Form submission with popup + clear
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 3000);
+    }
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       statusText.textContent = "Submitting...";
@@ -71,15 +98,15 @@
         });
 
         if (response.ok) {
-          alert("✅ Report submitted anonymously!");
+          showToast("✅ Report submitted anonymously!");
           textarea.value = "";
           statusText.textContent = "";
         } else {
-          alert("❌ Submission failed. Try again.");
+          showToast("❌ Submission failed.");
           statusText.textContent = "Failed to submit.";
         }
       } catch (err) {
-        alert("⚠️ Network error.");
+        showToast("⚠️ Network error.");
         statusText.textContent = "Error occurred.";
       }
     });
