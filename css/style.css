@@ -7,38 +7,40 @@
 
 /* Light Theme */
 :root {
-  --primary-color: #3b82f6;        /* blue-500 */
-  --primary-light: #dbeafe;        /* blue-100 */
-  --background-color: #f8fafc;     /* slate-50 */
-  --text-color: #0f172a;           /* slate-900 */
-  --nav-bg: #ffffff;               /* white */
-  --nav-text: #1e293b;             /* slate-700 */
+  --primary-color: #6366f1; /* indigo-500 */
+  --primary-light: #eef2ff;
+  --background-color: #f8fafc;
+  --text-color: #1e293b;
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --nav-text: #1e293b;
   --card-bg: #ffffff;
   --card-shadow: rgba(0, 0, 0, 0.05);
-  --btn-bg: #3b82f6;
+  --btn-bg: #6366f1;
   --btn-text: #ffffff;
-  --btn-hover-bg: #2563eb;         /* blue-600 */
-  --link-color: #1d4ed8;           /* blue-700 */
+  --btn-hover-bg: #4f46e5;
+  --link-color: #4338ca;
   --footer-bg: #f1f5f9;
-  --footer-text: #334155;
+  --footer-text: #475569;
+  --blur: blur(16px);
 }
 
 /* Dark Theme */
 body.dark-mode {
-  --primary-color: #60a5fa;        /* blue-400 */
-  --primary-light: #1e3a8a;        /* blue-900 */
-  --background-color: #0f172a;     /* slate-900 */
-  --text-color: #f1f5f9;           /* slate-100 */
-  --nav-bg: #1e293b;
-  --nav-text: #cbd5e1;
+  --primary-color: #8b5cf6;
+  --primary-light: #1e293b;
+  --background-color: #0f172a;
+  --text-color: #e2e8f0;
+  --nav-bg: rgba(30, 41, 59, 0.8);
+  --nav-text: #e0e7ff;
   --card-bg: #1e1e2e;
   --card-shadow: rgba(255, 255, 255, 0.05);
-  --btn-bg: #3b82f6;
+  --btn-bg: #6366f1;
   --btn-text: #ffffff;
-  --btn-hover-bg: #2563eb;
-  --link-color: #93c5fd;
+  --btn-hover-bg: #7c3aed;
+  --link-color: #c4b5fd;
   --footer-bg: #1e293b;
   --footer-text: #cbd5e1;
+  --blur: blur(8px);
 }
 
 body {
@@ -49,22 +51,24 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  transition: all 0.4s ease;
 }
 
 /* Navbar */
 nav {
+  backdrop-filter: var(--blur);
   background-color: var(--nav-bg);
   color: var(--nav-text);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.5rem;
-  box-shadow: 0 2px 6px var(--card-shadow);
+  box-shadow: 0 4px 12px var(--card-shadow);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   flex-wrap: wrap;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 nav .logo {
@@ -96,17 +100,17 @@ nav ul.nav-links li a.active {
   color: var(--btn-text);
 }
 
-nav #darkModeToggle {
+#darkModeToggle {
   background-color: transparent;
   border: none;
   color: var(--nav-text);
   font-size: 1.4rem;
   cursor: pointer;
-  transition: color 0.3s;
+  transition: all 0.3s;
   margin-left: auto;
 }
 
-nav #darkModeToggle:hover {
+#darkModeToggle:hover {
   color: var(--primary-color);
 }
 
@@ -119,6 +123,7 @@ nav #darkModeToggle:hover {
   cursor: pointer;
 }
 
+/* Responsive Nav */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -135,6 +140,7 @@ nav #darkModeToggle:hover {
     border-radius: 10px;
     box-shadow: 0 4px 12px var(--card-shadow);
     padding: 1rem;
+    backdrop-filter: var(--blur);
   }
 
   nav ul.nav-links.active {
@@ -142,7 +148,7 @@ nav #darkModeToggle:hover {
   }
 }
 
-/* Hero Section */
+/* Hero */
 .hero {
   text-align: center;
   padding: 3rem 1rem;
@@ -153,7 +159,7 @@ nav #darkModeToggle:hover {
 }
 
 .hero h1 {
-  font-size: 2.4rem;
+  font-size: 2.5rem;
   color: var(--primary-color);
   margin-bottom: 0.75rem;
 }
@@ -168,10 +174,10 @@ nav #darkModeToggle:hover {
   max-width: 100%;
   border-radius: 12px;
   margin-top: 1rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-/* Card Styling */
+/* Cards */
 .card, .box, .about {
   background-color: var(--card-bg);
   padding: 1.5rem;
@@ -179,7 +185,7 @@ nav #darkModeToggle:hover {
   box-shadow: 0 6px 12px var(--card-shadow);
   margin: 1rem auto;
   max-width: 960px;
-  transition: background-color 0.4s ease;
+  transition: all 0.4s ease;
 }
 
 .card h2 {
@@ -196,14 +202,16 @@ nav #darkModeToggle:hover {
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .btn:hover, button:hover {
   background-color: var(--btn-hover-bg);
+  transform: translateY(-2px);
 }
 
-/* General Links */
+/* Links */
 a {
   color: var(--link-color);
   transition: 0.2s;
@@ -224,7 +232,7 @@ footer {
   transition: background-color 0.3s ease;
 }
 
-/* Scroll and layout */
+/* Scroll fix + smooth */
 html, body {
   height: 100%;
   overflow-y: auto;
