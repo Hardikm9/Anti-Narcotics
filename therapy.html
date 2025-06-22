@@ -9,7 +9,7 @@
 <body>
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="logo">🚫 NarcStop AI</div>
+    <div class="logo">🧠 NarcStop AI</div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="report.html">Report</a></li>
@@ -24,25 +24,25 @@
 
   <!-- Main Content -->
   <main class="page-content">
-    <h1>🧠 Therapy Chat</h1>
-    <p>Welcome to NarcStop AI's therapy support. Chat anonymously with our AI therapy assistant.</p>
+    <h1>💬 Therapy Chat</h1>
+    <p>Chat anonymously with our AI therapy assistant. We're here to support your recovery journey.</p>
 
-    <!-- Balanced Chat Embed -->
+    <!-- Chat Embed -->
     <section class="card" style="padding: 1rem; margin-top: 1.5rem; display: flex; justify-content: center;">
       <iframe
         src="https://www.chatbase.co/chatbot-iframe/0xcpuX5tzydy-wZpZ44vA"
-        width="100%"
         style="height: 500px; max-width: 600px; width: 100%; border: none; border-radius: 12px;"
         frameborder="0"
         allow="clipboard-write"
+        title="Therapy Chat"
       ></iframe>
     </section>
 
-<p style="margin-top: 1rem;">
-  <strong>Need human help?</strong>
-  <a href="tel:1933" class="btn" style="margin-right: 0.5rem;">📞 CALL</a>
-</p>
-
+    <!-- Call Button -->
+    <p style="text-align: center; margin-top: 1rem;">
+      <strong>Need to talk to a real person?</strong><br />
+      <a href="tel:1933" class="btn" style="margin-top: 0.5rem;">📞 Call 1933 (India)</a>
+    </p>
   </main>
 
   <!-- Footer -->
@@ -53,6 +53,7 @@
   <!-- Dark Mode Script -->
   <script>
     const toggleBtn = document.getElementById("darkModeToggle");
+
     if (localStorage.getItem("theme") === "dark") {
       document.body.classList.add("dark-mode");
       toggleBtn.textContent = "☀️";
