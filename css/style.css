@@ -5,40 +5,40 @@
   box-sizing: border-box;
 }
 
-/* Light Theme */
+/* Light Theme Variables */
 :root {
-  --primary-color: #ec4899;
-  --primary-light: #fdf4ff;
-  --background-color: #fff0f6;
-  --text-color: #1e1b2e;
-  --nav-bg: #ffe4f0;
-  --nav-text: #a21caf;
+  --primary-color: #2563eb;
+  --primary-light: #e0e7ff;
+  --background-color: #f9fafb;
+  --text-color: #1f2937;
+  --nav-bg: #ffffff;
+  --nav-text: #111827;
   --card-bg: #ffffff;
   --card-shadow: rgba(0, 0, 0, 0.05);
-  --btn-bg: #ec4899;
+  --btn-bg: #2563eb;
   --btn-text: #ffffff;
-  --btn-hover-bg: #db2777;
-  --link-color: #a21caf;
-  --footer-bg: #ffe4f0;
-  --footer-text: #4c1d95;
+  --btn-hover-bg: #1d4ed8;
+  --link-color: #2563eb;
+  --footer-bg: #f3f4f6;
+  --footer-text: #6b7280;
 }
 
-/* Dark Mode Overrides */
+/* Dark Theme Overrides */
 body.dark-mode {
-  --primary-color: #f472b6;
-  --primary-light: #2a132e;
-  --background-color: #1a1a2e;
-  --text-color: #fce7f3;
-  --nav-bg: #2c1236;
-  --nav-text: #f9a8d4;
-  --card-bg: #2f1b3d;
-  --card-shadow: rgba(255, 255, 255, 0.03);
-  --btn-bg: #ec4899;
+  --primary-color: #60a5fa;
+  --primary-light: #1e3a8a;
+  --background-color: #0f172a;
+  --text-color: #f3f4f6;
+  --nav-bg: #1e293b;
+  --nav-text: #e5e7eb;
+  --card-bg: #1f2937;
+  --card-shadow: rgba(255, 255, 255, 0.05);
+  --btn-bg: #3b82f6;
   --btn-text: #ffffff;
-  --btn-hover-bg: #be185d;
-  --link-color: #f9a8d4;
-  --footer-bg: #2c1236;
-  --footer-text: #fce7f3;
+  --btn-hover-bg: #2563eb;
+  --link-color: #60a5fa;
+  --footer-bg: #1e293b;
+  --footer-text: #9ca3af;
 }
 
 body {
@@ -49,7 +49,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Navbar */
@@ -70,7 +70,12 @@ nav {
 nav .logo {
   font-weight: bold;
   font-size: 1.5rem;
-  flex: 1;
+}
+
+nav .right-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 nav ul.nav-links {
@@ -102,7 +107,6 @@ nav ul.nav-links li a.active {
   font-size: 1.4rem;
   cursor: pointer;
   transition: color 0.3s;
-  margin-left: 1rem;
 }
 
 #darkModeToggle:hover {
@@ -145,7 +149,7 @@ nav ul.nav-links li a.active {
 .hero {
   text-align: center;
   padding: 3rem 1rem;
-  background: linear-gradient(135deg, #fce7f3, #faf5ff);
+  background: linear-gradient(135deg, var(--primary-light), var(--background-color));
   border-radius: 12px;
   margin: 1.5rem;
   transition: 0.4s ease;
@@ -203,6 +207,7 @@ nav ul.nav-links li a.active {
   transform: scale(1.03);
 }
 
+/* Links */
 a {
   color: var(--link-color);
   transition: 0.2s;
