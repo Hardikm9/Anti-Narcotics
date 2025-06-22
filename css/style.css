@@ -7,35 +7,35 @@
 
 /* Light Theme */
 :root {
-  --primary-color: #6366f1; /* indigo-500 */
-  --primary-light: #e0e7ff;
-  --background-color: #f8fafc;
-  --text-color: #1e293b;
-  --nav-bg: #ffffff;
-  --nav-text: #334155;
+  --primary-color: #3b82f6;        /* blue-500 */
+  --primary-light: #dbeafe;        /* blue-100 */
+  --background-color: #f8fafc;     /* slate-50 */
+  --text-color: #0f172a;           /* slate-900 */
+  --nav-bg: #ffffff;               /* white */
+  --nav-text: #1e293b;             /* slate-700 */
   --card-bg: #ffffff;
   --card-shadow: rgba(0, 0, 0, 0.05);
-  --btn-bg: #6366f1;
+  --btn-bg: #3b82f6;
   --btn-text: #ffffff;
-  --btn-hover-bg: #4f46e5;
-  --link-color: #4338ca;
+  --btn-hover-bg: #2563eb;         /* blue-600 */
+  --link-color: #1d4ed8;           /* blue-700 */
   --footer-bg: #f1f5f9;
-  --footer-text: #475569;
+  --footer-text: #334155;
 }
 
 /* Dark Theme */
 body.dark-mode {
-  --primary-color: #818cf8;
-  --primary-light: #1e293b;
-  --background-color: #0f172a;
-  --text-color: #e2e8f0;
+  --primary-color: #60a5fa;        /* blue-400 */
+  --primary-light: #1e3a8a;        /* blue-900 */
+  --background-color: #0f172a;     /* slate-900 */
+  --text-color: #f1f5f9;           /* slate-100 */
   --nav-bg: #1e293b;
-  --nav-text: #e0e7ff;
+  --nav-text: #cbd5e1;
   --card-bg: #1e1e2e;
   --card-shadow: rgba(255, 255, 255, 0.05);
-  --btn-bg: #6366f1;
+  --btn-bg: #3b82f6;
   --btn-text: #ffffff;
-  --btn-hover-bg: #4f46e5;
+  --btn-hover-bg: #2563eb;
   --link-color: #93c5fd;
   --footer-bg: #1e293b;
   --footer-text: #cbd5e1;
@@ -146,7 +146,7 @@ nav #darkModeToggle:hover {
 .hero {
   text-align: center;
   padding: 3rem 1rem;
-  background: linear-gradient(to right, var(--primary-light), #f0f9ff);
+  background: linear-gradient(to right, var(--primary-light), #e0f2fe);
   border-radius: 12px;
   margin: 1.5rem;
   transition: 0.4s ease;
@@ -223,6 +223,8 @@ footer {
   margin-top: auto;
   transition: background-color 0.3s ease;
 }
+
+/* Scroll and layout */
 html, body {
   height: 100%;
   overflow-y: auto;
